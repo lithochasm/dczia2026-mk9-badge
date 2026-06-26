@@ -104,7 +104,6 @@ Want to run QMK instead? The hardware is fully compatible; QMK setup instruction
 
 DCZia is committed to open source hardware and software. All design files and firmware are publicly available.
 
-- **GitHub:** [github.com/dczia/mk9-badge](https://github.com/dczia/mk9-badge)
 - **Live CAD (OnShape):** [View the design](https://cad.onshape.com/documents/36884624fbe35c16a5af61a7/w/233227193d278274727a44c3/e/ea987b4b53c4648fa3dc84b6)
 
-Questions? Issues? Drop them in the GitHub issue tracker or find us on Discord / Bluesky.
+
