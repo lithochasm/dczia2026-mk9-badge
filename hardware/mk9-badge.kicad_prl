@@ -49,8 +49,7 @@
       "drc_exclusions",
       "locked_item_shadows",
       "conflict_shadows",
-      "shapes",
-      "ly_points"
+      "shapes"
     ],
     "visible_layers": "00000000_00000000_0000000a_220088af",
     "zone_display_mode": 0
