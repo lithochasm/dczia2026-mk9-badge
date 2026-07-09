@@ -3,7 +3,7 @@
 	(generator "eeschema")
 	(generator_version "10.0")
 	(uuid "f05b62d1-4b5b-4ccb-b08f-2916d03baa95")
-	(paper "A4")
+	(paper "USLetter")
 	(title_block
 		(title "Mk9")
 		(date "2026-06-19")
@@ -1946,84 +1946,84 @@
 		)
 	)
 	(junction
-		(at 78.74 68.326)
+		(at 65.532 72.644)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "00af865c-af61-4e2b-9aa8-e82232db95c3")
 	)
 	(junction
-		(at 65.532 60.706)
+		(at 52.324 65.024)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0c691dcb-5285-4772-837a-a531263a02fb")
 	)
 	(junction
-		(at 100.076 68.326)
+		(at 86.868 72.644)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "10563fad-ab38-4a9b-b622-d4bdc90697c5")
 	)
 	(junction
-		(at 78.74 96.012)
+		(at 65.532 100.33)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3460fb06-7ced-4c55-bb80-562d43bcb428")
 	)
 	(junction
-		(at 78.74 81.28)
+		(at 65.532 85.598)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "465423ec-efc2-4b6f-95e5-96eccc2499bc")
 	)
 	(junction
-		(at 44.196 60.706)
+		(at 30.988 65.024)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7503a163-eeba-4ca3-b943-6c099f9bec52")
 	)
 	(junction
-		(at 44.196 73.66)
+		(at 30.988 77.978)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7f14fb16-e26b-4601-94ea-1cb9adbafd09")
 	)
 	(junction
-		(at 100.076 96.012)
+		(at 86.868 100.33)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9136f793-766b-4a12-8b4f-465c27073522")
 	)
 	(junction
-		(at 86.868 60.706)
+		(at 73.66 65.024)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d173ded1-2af3-4b1b-9255-ec0713150f98")
 	)
 	(junction
-		(at 100.076 81.28)
+		(at 86.868 85.598)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d907257c-0b29-401d-b5c7-9363675f7e32")
 	)
 	(junction
-		(at 86.868 73.66)
+		(at 73.66 77.978)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dc2a3298-656f-45d4-a56f-ae18f48302b7")
 	)
 	(junction
-		(at 65.532 73.66)
+		(at 52.324 77.978)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e0c3e1f4-ece1-4e31-8de1-46c040a1ec95")
 	)
 	(no_connect
-		(at 106.68 155.702)
+		(at 93.472 160.02)
 		(uuid "75eece80-89c2-4923-87e8-e8aa8956b9b9")
 	)
 	(wire
 		(pts
-			(xy 106.68 127.762) (xy 109.982 127.762)
+			(xy 93.472 132.08) (xy 96.774 132.08)
 		)
 		(stroke
 			(width 0)
@@ -2033,7 +2033,7 @@
 	)
 	(wire
 		(pts
-			(xy 136.398 36.068) (xy 130.556 36.068)
+			(xy 123.19 40.386) (xy 117.348 40.386)
 		)
 		(stroke
 			(width 0)
@@ -2043,7 +2043,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.196 73.66) (xy 44.196 86.614)
+			(xy 30.988 77.978) (xy 30.988 90.932)
 		)
 		(stroke
 			(width 0)
@@ -2053,7 +2053,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.878 65.532) (xy 166.878 79.248)
+			(xy 153.67 69.85) (xy 153.67 83.566)
 		)
 		(stroke
 			(width 0)
@@ -2063,7 +2063,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.404 96.012) (xy 78.74 96.012)
+			(xy 44.196 100.33) (xy 65.532 100.33)
 		)
 		(stroke
 			(width 0)
@@ -2073,7 +2073,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.404 86.614) (xy 57.404 88.392)
+			(xy 44.196 90.932) (xy 44.196 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2083,7 +2083,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.868 73.66) (xy 86.868 86.614)
+			(xy 73.66 77.978) (xy 73.66 90.932)
 		)
 		(stroke
 			(width 0)
@@ -2093,7 +2093,7 @@
 	)
 	(wire
 		(pts
-			(xy 159.512 51.308) (xy 163.322 51.308)
+			(xy 146.304 55.626) (xy 150.114 55.626)
 		)
 		(stroke
 			(width 0)
@@ -2103,7 +2103,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.076 96.012) (xy 107.188 96.012)
+			(xy 86.868 100.33) (xy 93.98 100.33)
 		)
 		(stroke
 			(width 0)
@@ -2113,7 +2113,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.878 107.188) (xy 173.482 107.188)
+			(xy 153.67 111.506) (xy 160.274 111.506)
 		)
 		(stroke
 			(width 0)
@@ -2123,7 +2123,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.356 141.986) (xy 54.356 155.702)
+			(xy 41.148 146.304) (xy 41.148 160.02)
 		)
 		(stroke
 			(width 0)
@@ -2133,7 +2133,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.076 86.614) (xy 100.076 88.392)
+			(xy 86.868 90.932) (xy 86.868 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2143,7 +2143,7 @@
 	)
 	(wire
 		(pts
-			(xy 65.532 73.66) (xy 65.532 86.614)
+			(xy 52.324 77.978) (xy 52.324 90.932)
 		)
 		(stroke
 			(width 0)
@@ -2153,7 +2153,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.028 73.66) (xy 100.076 73.66)
+			(xy 83.82 77.978) (xy 86.868 77.978)
 		)
 		(stroke
 			(width 0)
@@ -2163,7 +2163,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 86.614) (xy 78.74 88.392)
+			(xy 65.532 90.932) (xy 65.532 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2173,7 +2173,7 @@
 	)
 	(wire
 		(pts
-			(xy 65.532 56.134) (xy 65.532 60.706)
+			(xy 52.324 60.452) (xy 52.324 65.024)
 		)
 		(stroke
 			(width 0)
@@ -2183,7 +2183,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.028 60.706) (xy 100.076 60.706)
+			(xy 83.82 65.024) (xy 86.868 65.024)
 		)
 		(stroke
 			(width 0)
@@ -2193,7 +2193,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.356 155.702) (xy 60.96 155.702)
+			(xy 41.148 160.02) (xy 47.752 160.02)
 		)
 		(stroke
 			(width 0)
@@ -2203,7 +2203,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.202 79.248) (xy 222.504 79.248)
+			(xy 205.994 83.566) (xy 209.296 83.566)
 		)
 		(stroke
 			(width 0)
@@ -2213,7 +2213,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.868 60.706) (xy 86.868 73.66)
+			(xy 73.66 65.024) (xy 73.66 77.978)
 		)
 		(stroke
 			(width 0)
@@ -2223,7 +2223,7 @@
 	)
 	(wire
 		(pts
-			(xy 224.536 107.188) (xy 219.202 107.188)
+			(xy 211.328 111.506) (xy 205.994 111.506)
 		)
 		(stroke
 			(width 0)
@@ -2233,7 +2233,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.196 60.706) (xy 44.196 73.66)
+			(xy 30.988 65.024) (xy 30.988 77.978)
 		)
 		(stroke
 			(width 0)
@@ -2243,7 +2243,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.196 56.134) (xy 44.196 60.706)
+			(xy 30.988 60.452) (xy 30.988 65.024)
 		)
 		(stroke
 			(width 0)
@@ -2253,7 +2253,7 @@
 	)
 	(wire
 		(pts
-			(xy 65.532 60.706) (xy 65.532 73.66)
+			(xy 52.324 65.024) (xy 52.324 77.978)
 		)
 		(stroke
 			(width 0)
@@ -2263,7 +2263,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.868 56.134) (xy 86.868 60.706)
+			(xy 73.66 60.452) (xy 73.66 65.024)
 		)
 		(stroke
 			(width 0)
@@ -2273,7 +2273,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.076 68.326) (xy 107.188 68.326)
+			(xy 86.868 72.644) (xy 93.98 72.644)
 		)
 		(stroke
 			(width 0)
@@ -2283,7 +2283,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.356 73.66) (xy 57.404 73.66)
+			(xy 41.148 77.978) (xy 44.196 77.978)
 		)
 		(stroke
 			(width 0)
@@ -2293,7 +2293,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.878 79.248) (xy 173.482 79.248)
+			(xy 153.67 83.566) (xy 160.274 83.566)
 		)
 		(stroke
 			(width 0)
@@ -2303,7 +2303,7 @@
 	)
 	(wire
 		(pts
-			(xy 75.692 60.706) (xy 78.74 60.706)
+			(xy 62.484 65.024) (xy 65.532 65.024)
 		)
 		(stroke
 			(width 0)
@@ -2313,7 +2313,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.404 81.28) (xy 78.74 81.28)
+			(xy 44.196 85.598) (xy 65.532 85.598)
 		)
 		(stroke
 			(width 0)
@@ -2323,7 +2323,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 96.012) (xy 100.076 96.012)
+			(xy 65.532 100.33) (xy 86.868 100.33)
 		)
 		(stroke
 			(width 0)
@@ -2333,7 +2333,7 @@
 	)
 	(wire
 		(pts
-			(xy 136.398 34.544) (xy 136.398 36.068)
+			(xy 123.19 38.862) (xy 123.19 40.386)
 		)
 		(stroke
 			(width 0)
@@ -2343,7 +2343,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.982 141.986) (xy 54.356 141.986)
+			(xy 96.774 146.304) (xy 41.148 146.304)
 		)
 		(stroke
 			(width 0)
@@ -2353,7 +2353,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.982 127.762) (xy 109.982 141.986)
+			(xy 96.774 132.08) (xy 96.774 146.304)
 		)
 		(stroke
 			(width 0)
@@ -2363,7 +2363,7 @@
 	)
 	(wire
 		(pts
-			(xy 75.692 73.66) (xy 78.74 73.66)
+			(xy 62.484 77.978) (xy 65.532 77.978)
 		)
 		(stroke
 			(width 0)
@@ -2373,7 +2373,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.504 51.308) (xy 222.504 65.532)
+			(xy 209.296 55.626) (xy 209.296 69.85)
 		)
 		(stroke
 			(width 0)
@@ -2383,7 +2383,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.878 93.472) (xy 166.878 107.188)
+			(xy 153.67 97.79) (xy 153.67 111.506)
 		)
 		(stroke
 			(width 0)
@@ -2393,7 +2393,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.404 68.326) (xy 78.74 68.326)
+			(xy 44.196 72.644) (xy 65.532 72.644)
 		)
 		(stroke
 			(width 0)
@@ -2403,7 +2403,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.504 79.248) (xy 222.504 93.472)
+			(xy 209.296 83.566) (xy 209.296 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2413,7 +2413,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.942 51.308) (xy 173.482 51.308)
+			(xy 157.734 55.626) (xy 160.274 55.626)
 		)
 		(stroke
 			(width 0)
@@ -2423,7 +2423,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.356 60.706) (xy 57.404 60.706)
+			(xy 41.148 65.024) (xy 44.196 65.024)
 		)
 		(stroke
 			(width 0)
@@ -2433,7 +2433,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.202 51.308) (xy 222.504 51.308)
+			(xy 205.994 55.626) (xy 209.296 55.626)
 		)
 		(stroke
 			(width 0)
@@ -2443,7 +2443,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 127.762) (xy 60.96 127.762)
+			(xy 45.212 132.08) (xy 47.752 132.08)
 		)
 		(stroke
 			(width 0)
@@ -2453,7 +2453,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.076 81.28) (xy 107.188 81.28)
+			(xy 86.868 85.598) (xy 93.98 85.598)
 		)
 		(stroke
 			(width 0)
@@ -2463,7 +2463,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.332 36.068) (xy 120.396 36.068)
+			(xy 103.124 40.386) (xy 107.188 40.386)
 		)
 		(stroke
 			(width 0)
@@ -2473,7 +2473,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.332 34.798) (xy 116.332 36.068)
+			(xy 103.124 39.116) (xy 103.124 40.386)
 		)
 		(stroke
 			(width 0)
@@ -2483,7 +2483,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 81.28) (xy 100.076 81.28)
+			(xy 65.532 85.598) (xy 86.868 85.598)
 		)
 		(stroke
 			(width 0)
@@ -2493,7 +2493,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.504 65.532) (xy 166.878 65.532)
+			(xy 209.296 69.85) (xy 153.67 69.85)
 		)
 		(stroke
 			(width 0)
@@ -2503,7 +2503,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.028 86.614) (xy 100.076 86.614)
+			(xy 83.82 90.932) (xy 86.868 90.932)
 		)
 		(stroke
 			(width 0)
@@ -2513,7 +2513,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 68.326) (xy 100.076 68.326)
+			(xy 65.532 72.644) (xy 86.868 72.644)
 		)
 		(stroke
 			(width 0)
@@ -2523,7 +2523,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.504 93.472) (xy 166.878 93.472)
+			(xy 209.296 97.79) (xy 153.67 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2533,7 +2533,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.356 86.614) (xy 57.404 86.614)
+			(xy 41.148 90.932) (xy 44.196 90.932)
 		)
 		(stroke
 			(width 0)
@@ -2543,7 +2543,7 @@
 	)
 	(wire
 		(pts
-			(xy 75.692 86.614) (xy 78.74 86.614)
+			(xy 62.484 90.932) (xy 65.532 90.932)
 		)
 		(stroke
 			(width 0)
@@ -2553,7 +2553,7 @@
 	)
 	(global_label "SIDE_LEDS"
 		(shape input)
-		(at 58.42 127.762 180)
+		(at 45.212 132.08 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2563,7 +2563,7 @@
 		)
 		(uuid "3f1a4e3a-1a88-4768-8c0e-5628da06ffc5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 45.5773 127.762 0)
+			(at 32.3693 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2577,7 +2577,7 @@
 	)
 	(global_label "SIDE_LEDS"
 		(shape input)
-		(at 224.536 107.188 0)
+		(at 211.328 111.506 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2587,7 +2587,7 @@
 		)
 		(uuid "e77cd806-f8c6-4539-91c8-3208b70de01b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 237.3787 107.188 0)
+			(at 224.1707 111.506 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2601,7 +2601,7 @@
 	)
 	(hierarchical_label "C1"
 		(shape input)
-		(at 65.532 56.134 90)
+		(at 52.324 60.452 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2612,7 +2612,7 @@
 	)
 	(hierarchical_label "RGB In"
 		(shape input)
-		(at 159.512 51.308 180)
+		(at 146.304 55.626 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2623,7 +2623,7 @@
 	)
 	(hierarchical_label "C2"
 		(shape input)
-		(at 86.868 56.134 90)
+		(at 73.66 60.452 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2634,7 +2634,7 @@
 	)
 	(hierarchical_label "R0"
 		(shape input)
-		(at 107.188 68.326 0)
+		(at 93.98 72.644 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2645,7 +2645,7 @@
 	)
 	(hierarchical_label "R1"
 		(shape input)
-		(at 107.188 81.28 0)
+		(at 93.98 85.598 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2656,7 +2656,7 @@
 	)
 	(hierarchical_label "C0"
 		(shape input)
-		(at 44.196 56.134 90)
+		(at 30.988 60.452 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2667,7 +2667,7 @@
 	)
 	(hierarchical_label "R2"
 		(shape input)
-		(at 107.188 96.012 0)
+		(at 93.98 100.33 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2678,7 +2678,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 99.06 135.382 0)
+		(at 85.852 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2689,7 +2689,7 @@
 		(fields_autoplaced yes)
 		(uuid "00c21c70-1580-493e-9306-ace000343818")
 		(property "Reference" "#PWR076"
-			(at 100.33 134.112 0)
+			(at 87.122 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2700,7 +2700,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 99.06 139.7064 0)
+			(at 85.852 144.0244 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2710,7 +2710,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 135.382 0)
+			(at 85.852 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2721,7 +2721,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 135.382 0)
+			(at 85.852 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2732,7 +2732,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 135.382 0)
+			(at 85.852 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2756,7 +2756,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 91.948 73.66 0)
+		(at 78.74 77.978 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2766,7 +2766,7 @@
 		(dnp no)
 		(uuid "029f5f16-483c-49ad-8397-f8269d7abeb9")
 		(property "Reference" "SW9"
-			(at 91.948 69.85 0)
+			(at 78.74 74.168 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2776,7 +2776,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 91.948 68.58 0)
+			(at 78.74 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2787,7 +2787,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 91.948 68.58 0)
+			(at 78.74 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2798,7 +2798,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.948 68.58 0)
+			(at 78.74 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2809,7 +2809,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 91.948 73.66 0)
+			(at 78.74 77.978 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2836,7 +2836,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 70.612 60.706 0)
+		(at 57.404 65.024 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2846,7 +2846,7 @@
 		(dnp no)
 		(uuid "048eb908-6fce-4cef-84b8-050ffbbbbe62")
 		(property "Reference" "SW5"
-			(at 70.612 56.896 0)
+			(at 57.404 61.214 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2856,7 +2856,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 70.612 55.626 0)
+			(at 57.404 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2867,7 +2867,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 70.612 55.626 0)
+			(at 57.404 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2878,7 +2878,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 70.612 55.626 0)
+			(at 57.404 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2889,7 +2889,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 70.612 60.706 0)
+			(at 57.404 65.024 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2916,7 +2916,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 118.364 144.272 0)
+		(at 105.156 148.59 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2927,7 +2927,7 @@
 		(fields_autoplaced yes)
 		(uuid "0a79f0c2-1329-4578-9094-cef29e39db60")
 		(property "Reference" "#PWR067"
-			(at 118.364 148.082 0)
+			(at 105.156 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2938,7 +2938,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 118.364 139.7 0)
+			(at 105.156 144.018 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2948,7 +2948,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 118.364 144.272 0)
+			(at 105.156 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2959,7 +2959,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.364 144.272 0)
+			(at 105.156 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2970,7 +2970,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 118.364 144.272 0)
+			(at 105.156 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2994,7 +2994,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 138.684 151.892 0)
+		(at 125.476 156.21 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3005,7 +3005,7 @@
 		(fields_autoplaced yes)
 		(uuid "0ae7ffd4-9c99-4b19-ad9b-4a863719191c")
 		(property "Reference" "#PWR040"
-			(at 138.684 158.242 0)
+			(at 125.476 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3016,7 +3016,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 138.684 156.0275 0)
+			(at 125.476 160.3455 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3026,7 +3026,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 138.684 151.892 0)
+			(at 125.476 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3037,7 +3037,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 138.684 151.892 0)
+			(at 125.476 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3048,7 +3048,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 138.684 151.892 0)
+			(at 125.476 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3071,7 +3071,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 70.612 73.66 0)
+		(at 57.404 77.978 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3081,7 +3081,7 @@
 		(dnp no)
 		(uuid "1380d001-7609-45bc-aca6-3aa02733c93a")
 		(property "Reference" "SW8"
-			(at 70.612 69.85 0)
+			(at 57.404 74.168 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3091,7 +3091,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 70.612 68.58 0)
+			(at 57.404 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3102,7 +3102,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 70.612 68.58 0)
+			(at 57.404 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3113,7 +3113,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 70.612 68.58 0)
+			(at 57.404 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3124,7 +3124,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 70.612 73.66 0)
+			(at 57.404 77.978 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3151,7 +3151,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 116.332 34.798 0)
+		(at 123.19 38.862 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3161,7 +3161,7 @@
 		(dnp no)
 		(uuid "1c4db442-4acb-4eb8-9524-daf1f246d5da")
 		(property "Reference" "#PWR092"
-			(at 116.332 38.608 0)
+			(at 123.19 42.672 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3172,7 +3172,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 116.332 31.242 0)
+			(at 123.19 35.306 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3182,7 +3182,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.332 34.798 0)
+			(at 123.19 38.862 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3193,7 +3193,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.332 34.798 0)
+			(at 123.19 38.862 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3204,7 +3204,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 116.332 34.798 0)
+			(at 123.19 38.862 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3228,7 +3228,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 211.582 79.248 0)
+		(at 198.374 83.566 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3238,7 +3238,7 @@
 		(dnp no)
 		(uuid "1cdd47c8-55de-425a-8d38-1cdc89fb4d76")
 		(property "Reference" "D18"
-			(at 204.1145 70.8163 0)
+			(at 190.9065 75.1343 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3249,7 +3249,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 200.6093 72.7594 0)
+			(at 187.4013 77.0774 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3260,7 +3260,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 212.852 86.868 0)
+			(at 199.644 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3272,7 +3272,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 214.122 88.773 0)
+			(at 200.914 93.091 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3284,7 +3284,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 211.582 79.248 0)
+			(at 198.374 83.566 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3317,7 +3317,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 196.342 86.868 0)
+		(at 183.134 91.186 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3328,7 +3328,7 @@
 		(fields_autoplaced yes)
 		(uuid "1ffbab77-a37d-44c9-9242-cc82b1728e4a")
 		(property "Reference" "#PWR063"
-			(at 197.612 85.598 0)
+			(at 184.404 89.916 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3339,7 +3339,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 196.342 91.1924 0)
+			(at 183.134 95.5104 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3349,7 +3349,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.342 86.868 0)
+			(at 183.134 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3360,7 +3360,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.342 86.868 0)
+			(at 183.134 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3371,7 +3371,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.342 86.868 0)
+			(at 183.134 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3395,7 +3395,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 196.342 114.808 0)
+		(at 183.134 119.126 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3406,7 +3406,7 @@
 		(fields_autoplaced yes)
 		(uuid "2881696e-a95a-4a48-aa8a-a1f73e3870cd")
 		(property "Reference" "#PWR069"
-			(at 197.612 113.538 0)
+			(at 184.404 117.856 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3417,7 +3417,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 196.342 119.1324 0)
+			(at 183.134 123.4504 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3427,7 +3427,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.342 114.808 0)
+			(at 183.134 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3438,7 +3438,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.342 114.808 0)
+			(at 183.134 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3449,7 +3449,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.342 114.808 0)
+			(at 183.134 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3473,7 +3473,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 181.102 58.928 0)
+		(at 167.894 63.246 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3484,7 +3484,7 @@
 		(fields_autoplaced yes)
 		(uuid "2baf2374-1df7-470b-80f4-ddf14936403e")
 		(property "Reference" "#PWR056"
-			(at 182.372 57.658 0)
+			(at 169.164 61.976 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3495,7 +3495,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 181.102 63.2524 0)
+			(at 167.894 67.5704 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3505,7 +3505,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.102 58.928 0)
+			(at 167.894 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3516,7 +3516,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.102 58.928 0)
+			(at 167.894 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3527,7 +3527,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.102 58.928 0)
+			(at 167.894 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3551,7 +3551,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 128.524 144.272 0)
+		(at 115.316 148.59 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3562,7 +3562,7 @@
 		(fields_autoplaced yes)
 		(uuid "3a2818f1-0bf6-4b54-b2d2-11850e83a61d")
 		(property "Reference" "#PWR071"
-			(at 128.524 148.082 0)
+			(at 115.316 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3573,7 +3573,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 128.524 139.7 0)
+			(at 115.316 144.018 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3583,7 +3583,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 128.524 144.272 0)
+			(at 115.316 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3594,7 +3594,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.524 144.272 0)
+			(at 115.316 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3605,7 +3605,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 128.524 144.272 0)
+			(at 115.316 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3629,7 +3629,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 246.126 74.676 0)
+		(at 232.918 78.994 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3640,7 +3640,7 @@
 		(fields_autoplaced yes)
 		(uuid "3c7ff631-e9ff-4c81-bcf3-b9837407e424")
 		(property "Reference" "#PWR053"
-			(at 246.126 78.486 0)
+			(at 232.918 82.804 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3651,7 +3651,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 246.126 70.104 0)
+			(at 232.918 74.422 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3661,7 +3661,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 246.126 74.676 0)
+			(at 232.918 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3672,7 +3672,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 246.126 74.676 0)
+			(at 232.918 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3683,7 +3683,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 246.126 74.676 0)
+			(at 232.918 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3707,7 +3707,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 211.582 71.628 0)
+		(at 198.374 75.946 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3718,7 +3718,7 @@
 		(fields_autoplaced yes)
 		(uuid "3c9edd0a-a2f5-411a-ba2a-5d55fcd4d6d9")
 		(property "Reference" "#PWR048"
-			(at 211.582 75.438 0)
+			(at 198.374 79.756 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3729,7 +3729,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 211.582 67.056 0)
+			(at 198.374 71.374 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3739,7 +3739,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 211.582 71.628 0)
+			(at 198.374 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3750,7 +3750,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 211.582 71.628 0)
+			(at 198.374 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3761,7 +3761,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 211.582 71.628 0)
+			(at 198.374 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3785,7 +3785,7 @@
 	)
 	(symbol
 		(lib_id "SK6812-SIDE:SK6812-SIDE")
-		(at 83.82 127.762 0)
+		(at 70.612 132.08 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3795,7 +3795,7 @@
 		(dnp no)
 		(uuid "3d5d1a61-755b-4958-8238-c0af25e3010f")
 		(property "Reference" "D23"
-			(at 76.3525 119.3303 0)
+			(at 63.1445 123.6483 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3806,7 +3806,7 @@
 			)
 		)
 		(property "Value" "SK6812"
-			(at 72.8473 121.2734 0)
+			(at 59.6393 125.5914 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3817,7 +3817,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_SK6812_4020"
-			(at 85.09 135.382 0)
+			(at 71.882 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3829,7 +3829,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 86.36 137.287 0)
+			(at 73.152 141.605 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3841,7 +3841,7 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, side view"
-			(at 83.82 127.762 0)
+			(at 70.612 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3874,7 +3874,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 99.06 120.142 0)
+		(at 85.852 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3885,7 +3885,7 @@
 		(fields_autoplaced yes)
 		(uuid "427e04d5-027c-4e17-b2ec-05be09a83866")
 		(property "Reference" "#PWR060"
-			(at 99.06 123.952 0)
+			(at 85.852 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3896,7 +3896,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 99.06 115.57 0)
+			(at 85.852 119.888 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3906,7 +3906,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 120.142 0)
+			(at 85.852 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3917,7 +3917,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 120.142 0)
+			(at 85.852 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3928,7 +3928,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 99.06 120.142 0)
+			(at 85.852 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3952,7 +3952,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 235.966 82.296 0)
+		(at 222.758 86.614 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3963,7 +3963,7 @@
 		(fields_autoplaced yes)
 		(uuid "4a7cbf8b-2092-467c-832f-91c5afda8593")
 		(property "Reference" "#PWR035"
-			(at 235.966 88.646 0)
+			(at 222.758 92.964 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3974,7 +3974,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 235.966 86.4315 0)
+			(at 222.758 90.7495 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3984,7 +3984,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 235.966 82.296 0)
+			(at 222.758 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3995,7 +3995,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 235.966 82.296 0)
+			(at 222.758 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4006,7 +4006,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 235.966 82.296 0)
+			(at 222.758 86.614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4029,7 +4029,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 91.948 60.706 0)
+		(at 78.74 65.024 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4039,7 +4039,7 @@
 		(dnp no)
 		(uuid "4cba6c88-de43-4f94-9010-38829a62c4cf")
 		(property "Reference" "SW6"
-			(at 91.948 56.896 0)
+			(at 78.74 61.214 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4049,7 +4049,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 91.948 55.626 0)
+			(at 78.74 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4060,7 +4060,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 91.948 55.626 0)
+			(at 78.74 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4071,7 +4071,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.948 55.626 0)
+			(at 78.74 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4082,7 +4082,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 91.948 60.706 0)
+			(at 78.74 65.024 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4109,7 +4109,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 83.82 163.322 0)
+		(at 70.612 167.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4120,7 +4120,7 @@
 		(fields_autoplaced yes)
 		(uuid "527cf15a-08d6-476d-a973-3392a77e8825")
 		(property "Reference" "#PWR081"
-			(at 85.09 162.052 0)
+			(at 71.882 166.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4131,7 +4131,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 83.82 167.6464 0)
+			(at 70.612 171.9644 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4141,7 +4141,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 163.322 0)
+			(at 70.612 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4152,7 +4152,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 163.322 0)
+			(at 70.612 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4163,7 +4163,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 83.82 163.322 0)
+			(at 70.612 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4187,7 +4187,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 100.076 92.202 90)
+		(at 86.868 96.52 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4197,7 +4197,7 @@
 		(dnp no)
 		(uuid "5289cea3-0834-4019-b38b-89c5895389e0")
 		(property "Reference" "D12"
-			(at 97.028 92.202 90)
+			(at 83.82 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4207,7 +4207,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 102.616 92.202 0)
+			(at 89.408 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4218,7 +4218,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 100.076 92.202 0)
+			(at 86.868 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4229,7 +4229,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.076 92.202 0)
+			(at 86.868 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4240,7 +4240,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.076 92.202 0)
+			(at 86.868 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4266,7 +4266,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 138.684 144.272 0)
+		(at 125.476 148.59 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4277,7 +4277,7 @@
 		(fields_autoplaced yes)
 		(uuid "5355f4de-1077-490d-ae5a-a9303a2c4c7b")
 		(property "Reference" "#PWR072"
-			(at 138.684 148.082 0)
+			(at 125.476 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4288,7 +4288,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 138.684 139.7 0)
+			(at 125.476 144.018 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4298,7 +4298,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 138.684 144.272 0)
+			(at 125.476 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4309,7 +4309,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 138.684 144.272 0)
+			(at 125.476 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4320,7 +4320,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 138.684 144.272 0)
+			(at 125.476 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4344,7 +4344,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 235.966 74.676 0)
+		(at 222.758 78.994 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4355,7 +4355,7 @@
 		(fields_autoplaced yes)
 		(uuid "54e77173-879b-45df-9aac-656812964ffe")
 		(property "Reference" "#PWR052"
-			(at 235.966 78.486 0)
+			(at 222.758 82.804 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4366,7 +4366,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 235.966 70.104 0)
+			(at 222.758 74.422 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4376,7 +4376,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 235.966 74.676 0)
+			(at 222.758 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4387,7 +4387,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 235.966 74.676 0)
+			(at 222.758 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4398,7 +4398,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 235.966 74.676 0)
+			(at 222.758 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4422,7 +4422,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 256.286 74.676 0)
+		(at 243.078 78.994 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4433,7 +4433,7 @@
 		(fields_autoplaced yes)
 		(uuid "5bec6ef0-9941-42bc-92f7-3045473d436f")
 		(property "Reference" "#PWR054"
-			(at 256.286 78.486 0)
+			(at 243.078 82.804 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4444,7 +4444,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 256.286 70.104 0)
+			(at 243.078 74.422 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4454,7 +4454,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 256.286 74.676 0)
+			(at 243.078 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4465,7 +4465,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 256.286 74.676 0)
+			(at 243.078 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4476,7 +4476,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 256.286 74.676 0)
+			(at 243.078 78.994 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4500,7 +4500,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 167.132 51.308 270)
+		(at 153.924 55.626 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4510,7 +4510,7 @@
 		(dnp no)
 		(uuid "5c95cb81-cd59-4b74-99f8-8956d57f9ae8")
 		(property "Reference" "R9"
-			(at 167.132 49.022 90)
+			(at 153.924 53.34 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4520,7 +4520,7 @@
 			)
 		)
 		(property "Value" "10R"
-			(at 167.132 51.308 90)
+			(at 153.924 55.626 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4530,7 +4530,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 167.132 49.53 90)
+			(at 153.924 53.848 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4541,7 +4541,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.132 51.308 0)
+			(at 153.924 55.626 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4552,7 +4552,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 167.132 51.308 0)
+			(at 153.924 55.626 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4579,7 +4579,7 @@
 	)
 	(symbol
 		(lib_id "SK6812-SIDE:SK6812-SIDE")
-		(at 68.58 155.702 0)
+		(at 55.372 160.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4589,7 +4589,7 @@
 		(dnp no)
 		(uuid "5fe96719-c823-494b-81b5-ca9fd2b1b179")
 		(property "Reference" "D25"
-			(at 61.1125 147.2703 0)
+			(at 47.9045 151.5883 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4600,7 +4600,7 @@
 			)
 		)
 		(property "Value" "SK6812"
-			(at 57.6073 149.2134 0)
+			(at 44.3993 153.5314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4611,7 +4611,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_SK6812_4020"
-			(at 69.85 163.322 0)
+			(at 56.642 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4623,7 +4623,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 71.12 165.227 0)
+			(at 57.912 169.545 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4635,7 +4635,7 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, side view"
-			(at 68.58 155.702 0)
+			(at 55.372 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4668,7 +4668,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 256.286 78.486 0)
+		(at 243.078 82.804 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4678,7 +4678,7 @@
 		(dnp no)
 		(uuid "60b7d8c3-3ebf-46a3-a8fa-e299061127c1")
 		(property "Reference" "C17"
-			(at 256.921 75.946 0)
+			(at 243.713 80.264 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4689,7 +4689,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 256.921 81.026 0)
+			(at 243.713 85.344 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4700,7 +4700,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 257.2512 82.296 0)
+			(at 244.0432 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4711,7 +4711,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 256.286 78.486 0)
+			(at 243.078 82.804 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4722,7 +4722,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 256.286 78.486 0)
+			(at 243.078 82.804 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4748,7 +4748,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 99.06 148.082 0)
+		(at 85.852 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4759,7 +4759,7 @@
 		(fields_autoplaced yes)
 		(uuid "662f44f8-55ab-439b-af9a-b4939e73fa2e")
 		(property "Reference" "#PWR066"
-			(at 99.06 151.892 0)
+			(at 85.852 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4770,7 +4770,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 99.06 143.51 0)
+			(at 85.852 147.828 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4780,7 +4780,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 148.082 0)
+			(at 85.852 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4791,7 +4791,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 148.082 0)
+			(at 85.852 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4802,7 +4802,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 99.06 148.082 0)
+			(at 85.852 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4826,7 +4826,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 100.076 64.516 90)
+		(at 86.868 68.834 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4836,7 +4836,7 @@
 		(dnp no)
 		(uuid "6998489e-3373-4558-946f-9658102e056d")
 		(property "Reference" "D6"
-			(at 97.536 64.516 90)
+			(at 84.328 68.834 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4846,7 +4846,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 102.616 64.516 0)
+			(at 89.408 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4857,7 +4857,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 100.076 64.516 0)
+			(at 86.868 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4868,7 +4868,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.076 64.516 0)
+			(at 86.868 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4879,7 +4879,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.076 64.516 0)
+			(at 86.868 68.834 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4905,7 +4905,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 83.82 135.382 0)
+		(at 70.612 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4916,7 +4916,7 @@
 		(fields_autoplaced yes)
 		(uuid "6a9fddab-40af-41c2-8de4-5d71543f74c8")
 		(property "Reference" "#PWR075"
-			(at 85.09 134.112 0)
+			(at 71.882 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4927,7 +4927,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 83.82 139.7064 0)
+			(at 70.612 144.0244 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4937,7 +4937,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 135.382 0)
+			(at 70.612 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4948,7 +4948,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 135.382 0)
+			(at 70.612 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4959,7 +4959,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 83.82 135.382 0)
+			(at 70.612 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4983,7 +4983,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 181.102 79.248 0)
+		(at 167.894 83.566 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4993,7 +4993,7 @@
 		(dnp no)
 		(uuid "6ad693cb-f490-4147-91d1-0b952a063493")
 		(property "Reference" "D16"
-			(at 173.6345 70.8163 0)
+			(at 160.4265 75.1343 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5004,7 +5004,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 170.1293 72.7594 0)
+			(at 156.9213 77.0774 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5015,7 +5015,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 182.372 86.868 0)
+			(at 169.164 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5027,7 +5027,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 183.642 88.773 0)
+			(at 170.434 93.091 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5039,7 +5039,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.102 79.248 0)
+			(at 167.894 83.566 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5072,7 +5072,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 78.74 92.202 90)
+		(at 65.532 96.52 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5082,7 +5082,7 @@
 		(dnp no)
 		(uuid "6b57155e-91cc-4054-bfaf-ffaaad6afb92")
 		(property "Reference" "D11"
-			(at 76.2 92.202 90)
+			(at 62.992 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5092,7 +5092,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 81.28 92.202 0)
+			(at 68.072 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5103,7 +5103,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 78.74 92.202 0)
+			(at 65.532 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5114,7 +5114,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 92.202 0)
+			(at 65.532 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5125,7 +5125,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 92.202 0)
+			(at 65.532 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5151,7 +5151,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 68.58 135.382 0)
+		(at 55.372 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5162,7 +5162,7 @@
 		(fields_autoplaced yes)
 		(uuid "6ca05a57-d1e3-4517-b1fc-307ff6f957e2")
 		(property "Reference" "#PWR074"
-			(at 69.85 134.112 0)
+			(at 56.642 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5173,7 +5173,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 68.58 139.7064 0)
+			(at 55.372 144.0244 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5183,7 +5183,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 68.58 135.382 0)
+			(at 55.372 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5194,7 +5194,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 68.58 135.382 0)
+			(at 55.372 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5205,7 +5205,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 68.58 135.382 0)
+			(at 55.372 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5229,7 +5229,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 211.582 51.308 0)
+		(at 198.374 55.626 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5239,7 +5239,7 @@
 		(dnp no)
 		(uuid "6d916317-010f-41a8-ae26-2e803231dbc4")
 		(property "Reference" "D15"
-			(at 204.1145 42.8763 0)
+			(at 190.9065 47.1943 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5250,7 +5250,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 200.6093 44.8194 0)
+			(at 187.4013 49.1374 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5261,7 +5261,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 212.852 58.928 0)
+			(at 199.644 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5273,7 +5273,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 214.122 60.833 0)
+			(at 200.914 65.151 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5285,7 +5285,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 211.582 51.308 0)
+			(at 198.374 55.626 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5318,7 +5318,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 256.286 82.296 0)
+		(at 243.078 86.614 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5329,7 +5329,7 @@
 		(fields_autoplaced yes)
 		(uuid "733d0c77-99b3-4ce7-9f24-13509de972e6")
 		(property "Reference" "#PWR037"
-			(at 256.286 88.646 0)
+			(at 243.078 92.964 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5340,7 +5340,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 256.286 86.4315 0)
+			(at 243.078 90.7495 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5350,7 +5350,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 256.286 82.296 0)
+			(at 243.078 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5361,7 +5361,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 256.286 82.296 0)
+			(at 243.078 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5372,7 +5372,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 256.286 82.296 0)
+			(at 243.078 86.614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5395,7 +5395,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 235.966 78.486 0)
+		(at 222.758 82.804 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5405,7 +5405,7 @@
 		(dnp no)
 		(uuid "7d9ba530-c827-40d4-b09e-f0c97ed2121d")
 		(property "Reference" "C15"
-			(at 236.601 75.946 0)
+			(at 223.393 80.264 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5416,7 +5416,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 236.601 81.026 0)
+			(at 223.393 85.344 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5427,7 +5427,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 236.9312 82.296 0)
+			(at 223.7232 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5438,7 +5438,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 235.966 78.486 0)
+			(at 222.758 82.804 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5449,7 +5449,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 235.966 78.486 0)
+			(at 222.758 82.804 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5475,7 +5475,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 128.524 148.082 0)
+		(at 115.316 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5485,7 +5485,7 @@
 		(dnp no)
 		(uuid "87e6dd67-e4f2-43ef-9cc5-166126f3a32b")
 		(property "Reference" "C19"
-			(at 129.159 145.542 0)
+			(at 115.951 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5496,7 +5496,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 129.159 150.622 0)
+			(at 115.951 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5507,7 +5507,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 129.4892 151.892 0)
+			(at 116.2812 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5518,7 +5518,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.524 148.082 0)
+			(at 115.316 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5529,7 +5529,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 128.524 148.082 0)
+			(at 115.316 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5555,7 +5555,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 49.276 73.66 0)
+		(at 36.068 77.978 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5565,7 +5565,7 @@
 		(dnp no)
 		(uuid "895396e1-6e47-45d6-8703-fa5e7aaa5484")
 		(property "Reference" "SW7"
-			(at 49.276 69.85 0)
+			(at 36.068 74.168 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5575,7 +5575,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 49.276 68.58 0)
+			(at 36.068 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5586,7 +5586,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 49.276 68.58 0)
+			(at 36.068 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5597,7 +5597,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 49.276 68.58 0)
+			(at 36.068 72.898 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5608,7 +5608,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 49.276 73.66 0)
+			(at 36.068 77.978 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5635,7 +5635,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 136.398 34.544 0)
+		(at 103.124 39.116 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5646,7 +5646,7 @@
 		(fields_autoplaced yes)
 		(uuid "8da129af-5c08-449a-8723-e78ba11fc89c")
 		(property "Reference" "#PWR042"
-			(at 136.398 38.354 0)
+			(at 103.124 42.926 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5657,7 +5657,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 136.398 31.0421 0)
+			(at 103.124 35.6141 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5667,7 +5667,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 136.398 34.544 0)
+			(at 103.124 39.116 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5678,7 +5678,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 136.398 34.544 0)
+			(at 103.124 39.116 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5689,7 +5689,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 136.398 34.544 0)
+			(at 103.124 39.116 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5712,7 +5712,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 118.364 148.082 0)
+		(at 105.156 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5722,7 +5722,7 @@
 		(dnp no)
 		(uuid "8dca3598-7059-4139-9d03-e84b6ffc916e")
 		(property "Reference" "C18"
-			(at 118.999 145.542 0)
+			(at 105.791 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5733,7 +5733,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 118.999 150.622 0)
+			(at 105.791 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5744,7 +5744,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 119.3292 151.892 0)
+			(at 106.1212 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5755,7 +5755,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.364 148.082 0)
+			(at 105.156 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5766,7 +5766,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 118.364 148.082 0)
+			(at 105.156 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5792,7 +5792,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 68.58 148.082 0)
+		(at 55.372 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5803,7 +5803,7 @@
 		(fields_autoplaced yes)
 		(uuid "96656267-9f97-494d-a7c3-23f647f9df5b")
 		(property "Reference" "#PWR061"
-			(at 68.58 151.892 0)
+			(at 55.372 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5814,7 +5814,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 68.58 143.51 0)
+			(at 55.372 147.828 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5824,7 +5824,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 68.58 148.082 0)
+			(at 55.372 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5835,7 +5835,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 68.58 148.082 0)
+			(at 55.372 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5846,7 +5846,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 68.58 148.082 0)
+			(at 55.372 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5870,7 +5870,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 181.102 71.628 0)
+		(at 167.894 75.946 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5881,7 +5881,7 @@
 		(fields_autoplaced yes)
 		(uuid "969fc537-5965-498a-b7c1-17b3096172b1")
 		(property "Reference" "#PWR046"
-			(at 181.102 75.438 0)
+			(at 167.894 79.756 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5892,7 +5892,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 181.102 67.056 0)
+			(at 167.894 71.374 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5902,7 +5902,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.102 71.628 0)
+			(at 167.894 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5913,7 +5913,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.102 71.628 0)
+			(at 167.894 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5924,7 +5924,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 181.102 71.628 0)
+			(at 167.894 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5948,7 +5948,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 181.102 86.868 0)
+		(at 167.894 91.186 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5959,7 +5959,7 @@
 		(fields_autoplaced yes)
 		(uuid "9787deb9-1d33-442f-9f09-7ffbc31f9aff")
 		(property "Reference" "#PWR062"
-			(at 182.372 85.598 0)
+			(at 169.164 89.916 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5970,7 +5970,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 181.102 91.1924 0)
+			(at 167.894 95.5104 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5980,7 +5980,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.102 86.868 0)
+			(at 167.894 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5991,7 +5991,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.102 86.868 0)
+			(at 167.894 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6002,7 +6002,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.102 86.868 0)
+			(at 167.894 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6026,7 +6026,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 138.684 148.082 0)
+		(at 125.476 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6036,7 +6036,7 @@
 		(dnp no)
 		(uuid "98fcb6a0-71e0-4335-b3bc-b407e358b58f")
 		(property "Reference" "C20"
-			(at 139.319 145.542 0)
+			(at 126.111 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6047,7 +6047,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 139.319 150.622 0)
+			(at 126.111 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6058,7 +6058,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 139.6492 151.892 0)
+			(at 126.4412 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6069,7 +6069,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 138.684 148.082 0)
+			(at 125.476 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6080,7 +6080,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 138.684 148.082 0)
+			(at 125.476 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6106,7 +6106,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 70.612 86.614 0)
+		(at 57.404 90.932 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6116,7 +6116,7 @@
 		(dnp no)
 		(uuid "993a2899-f10f-498e-8836-352a5fdd3a5d")
 		(property "Reference" "SW11"
-			(at 70.612 82.804 0)
+			(at 57.404 87.122 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6126,7 +6126,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 70.612 81.534 0)
+			(at 57.404 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6137,7 +6137,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 70.612 81.534 0)
+			(at 57.404 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6148,7 +6148,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 70.612 81.534 0)
+			(at 57.404 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6159,7 +6159,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 70.612 86.614 0)
+			(at 57.404 90.932 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6186,7 +6186,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 196.342 79.248 0)
+		(at 183.134 83.566 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6196,7 +6196,7 @@
 		(dnp no)
 		(uuid "a4b39402-4fa1-4843-bc02-00eaacb9ecba")
 		(property "Reference" "D17"
-			(at 188.8745 70.8163 0)
+			(at 175.6665 75.1343 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6207,7 +6207,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 185.3693 72.7594 0)
+			(at 172.1613 77.0774 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6218,7 +6218,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 197.612 86.868 0)
+			(at 184.404 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6230,7 +6230,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 198.882 88.773 0)
+			(at 185.674 93.091 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6242,7 +6242,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.342 79.248 0)
+			(at 183.134 83.566 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6275,7 +6275,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 196.342 51.308 0)
+		(at 183.134 55.626 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6285,7 +6285,7 @@
 		(dnp no)
 		(uuid "a7925b44-93bb-4fda-8ef6-18278b3ea767")
 		(property "Reference" "D14"
-			(at 188.8745 42.8763 0)
+			(at 175.6665 47.1943 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6296,7 +6296,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 185.3693 44.8194 0)
+			(at 172.1613 49.1374 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6307,7 +6307,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 197.612 58.928 0)
+			(at 184.404 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6319,7 +6319,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 198.882 60.833 0)
+			(at 185.674 65.151 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6331,7 +6331,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.342 51.308 0)
+			(at 183.134 55.626 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6364,7 +6364,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 78.74 64.516 90)
+		(at 65.532 68.834 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6374,7 +6374,7 @@
 		(dnp no)
 		(uuid "abadb865-a15d-489a-b18b-c6b49aeddc00")
 		(property "Reference" "D5"
-			(at 76.2 64.516 90)
+			(at 62.992 68.834 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6384,7 +6384,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 81.28 64.516 0)
+			(at 68.072 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6395,7 +6395,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 78.74 64.516 0)
+			(at 65.532 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6406,7 +6406,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 64.516 0)
+			(at 65.532 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6417,7 +6417,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 64.516 0)
+			(at 65.532 68.834 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6443,7 +6443,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 196.342 58.928 0)
+		(at 183.134 63.246 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6454,7 +6454,7 @@
 		(fields_autoplaced yes)
 		(uuid "abf4248e-2be0-46aa-8850-0e52f24f3752")
 		(property "Reference" "#PWR057"
-			(at 197.612 57.658 0)
+			(at 184.404 61.976 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6465,7 +6465,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 196.342 63.2524 0)
+			(at 183.134 67.5704 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6475,7 +6475,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.342 58.928 0)
+			(at 183.134 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6486,7 +6486,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.342 58.928 0)
+			(at 183.134 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6497,7 +6497,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.342 58.928 0)
+			(at 183.134 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6521,7 +6521,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 57.404 92.202 90)
+		(at 44.196 96.52 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6531,7 +6531,7 @@
 		(dnp no)
 		(uuid "ac0a91e2-0522-4a93-aed6-b47080d05445")
 		(property "Reference" "D10"
-			(at 54.864 92.202 90)
+			(at 41.656 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6541,7 +6541,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 59.944 92.202 0)
+			(at 46.736 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6552,7 +6552,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 57.404 92.202 0)
+			(at 44.196 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6563,7 +6563,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.404 92.202 0)
+			(at 44.196 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6574,7 +6574,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 57.404 92.202 0)
+			(at 44.196 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6600,7 +6600,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 181.102 107.188 0)
+		(at 167.894 111.506 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6610,7 +6610,7 @@
 		(dnp no)
 		(uuid "afa80fcc-98a6-4b83-8bf7-4b3526b3e945")
 		(property "Reference" "D19"
-			(at 173.6345 98.7563 0)
+			(at 160.4265 103.0743 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6621,7 +6621,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 170.1293 100.6994 0)
+			(at 156.9213 105.0174 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6632,7 +6632,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 182.372 114.808 0)
+			(at 169.164 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6644,7 +6644,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 183.642 116.713 0)
+			(at 170.434 121.031 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6656,7 +6656,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.102 107.188 0)
+			(at 167.894 111.506 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6689,7 +6689,7 @@
 	)
 	(symbol
 		(lib_id "SK6812-SIDE:SK6812-SIDE")
-		(at 68.58 127.762 0)
+		(at 55.372 132.08 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6699,7 +6699,7 @@
 		(dnp no)
 		(uuid "afc54411-e2e4-45ec-847d-ed5a355bd97e")
 		(property "Reference" "D22"
-			(at 61.1125 119.3303 0)
+			(at 47.9045 123.6483 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6710,7 +6710,7 @@
 			)
 		)
 		(property "Value" "SK6812"
-			(at 57.6073 121.2734 0)
+			(at 44.3993 125.5914 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6721,7 +6721,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_SK6812_4020"
-			(at 69.85 135.382 0)
+			(at 56.642 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6733,7 +6733,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 71.12 137.287 0)
+			(at 57.912 141.605 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6745,7 +6745,7 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, side view"
-			(at 68.58 127.762 0)
+			(at 55.372 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6778,7 +6778,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 100.076 77.47 90)
+		(at 86.868 81.788 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6788,7 +6788,7 @@
 		(dnp no)
 		(uuid "b4b47595-bd50-4273-aada-e527e71cec52")
 		(property "Reference" "D9"
-			(at 97.028 77.47 90)
+			(at 83.82 81.788 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6798,7 +6798,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 102.616 77.47 0)
+			(at 89.408 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6809,7 +6809,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 100.076 77.47 0)
+			(at 86.868 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6820,7 +6820,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.076 77.47 0)
+			(at 86.868 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6831,7 +6831,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.076 77.47 0)
+			(at 86.868 81.788 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6857,7 +6857,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 57.404 64.516 90)
+		(at 44.196 68.834 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6867,7 +6867,7 @@
 		(dnp no)
 		(uuid "ba6122fa-88ca-4bf9-9827-2f81115ca7bd")
 		(property "Reference" "D4"
-			(at 54.864 64.516 90)
+			(at 41.656 68.834 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6877,7 +6877,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 59.944 64.516 0)
+			(at 46.736 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6888,7 +6888,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 57.404 64.516 0)
+			(at 44.196 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6899,7 +6899,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.404 64.516 0)
+			(at 44.196 68.834 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6910,7 +6910,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 57.404 64.516 0)
+			(at 44.196 68.834 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6936,7 +6936,7 @@
 	)
 	(symbol
 		(lib_id "SK6812-SIDE:SK6812-SIDE")
-		(at 99.06 127.762 0)
+		(at 85.852 132.08 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6946,7 +6946,7 @@
 		(dnp no)
 		(uuid "bbf5d991-1be6-4152-a7ca-ab545e2016c8")
 		(property "Reference" "D24"
-			(at 91.5925 119.3303 0)
+			(at 78.3845 123.6483 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6957,7 +6957,7 @@
 			)
 		)
 		(property "Value" "SK6812"
-			(at 88.0873 121.2734 0)
+			(at 74.8793 125.5914 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6968,7 +6968,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_SK6812_4020"
-			(at 100.33 135.382 0)
+			(at 87.122 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6980,7 +6980,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 101.6 137.287 0)
+			(at 88.392 141.605 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6992,7 +6992,7 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, side view"
-			(at 99.06 127.762 0)
+			(at 85.852 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7025,7 +7025,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 78.74 77.47 90)
+		(at 65.532 81.788 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7035,7 +7035,7 @@
 		(dnp no)
 		(uuid "c0141d05-472e-4d10-b53f-d8d34a8e929e")
 		(property "Reference" "D8"
-			(at 76.2 77.47 90)
+			(at 62.992 81.788 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7045,7 +7045,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 81.28 77.47 0)
+			(at 68.072 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7056,7 +7056,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 78.74 77.47 0)
+			(at 65.532 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7067,7 +7067,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 77.47 0)
+			(at 65.532 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7078,7 +7078,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 77.47 0)
+			(at 65.532 81.788 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7104,7 +7104,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 181.102 99.568 0)
+		(at 167.894 103.886 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7115,7 +7115,7 @@
 		(fields_autoplaced yes)
 		(uuid "c090c9aa-5199-477b-b7af-401c425b8137")
 		(property "Reference" "#PWR049"
-			(at 181.102 103.378 0)
+			(at 167.894 107.696 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7126,7 +7126,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 181.102 94.996 0)
+			(at 167.894 99.314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7136,7 +7136,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.102 99.568 0)
+			(at 167.894 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7147,7 +7147,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.102 99.568 0)
+			(at 167.894 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7158,7 +7158,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 181.102 99.568 0)
+			(at 167.894 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7182,7 +7182,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 91.948 86.614 0)
+		(at 78.74 90.932 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7192,7 +7192,7 @@
 		(dnp no)
 		(uuid "c27726f3-4d71-4724-9db5-b4683afdfea6")
 		(property "Reference" "SW12"
-			(at 91.948 82.804 0)
+			(at 78.74 87.122 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7202,7 +7202,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 91.948 81.534 0)
+			(at 78.74 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7213,7 +7213,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 91.948 81.534 0)
+			(at 78.74 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7224,7 +7224,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.948 81.534 0)
+			(at 78.74 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7235,7 +7235,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 91.948 86.614 0)
+			(at 78.74 90.932 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7262,7 +7262,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 211.582 107.188 0)
+		(at 198.374 111.506 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7272,7 +7272,7 @@
 		(dnp no)
 		(uuid "c2ce728d-6b19-41e0-892f-33ec613e56f9")
 		(property "Reference" "D21"
-			(at 204.1145 98.7563 0)
+			(at 190.9065 103.0743 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7283,7 +7283,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 200.6093 100.6994 0)
+			(at 187.4013 105.0174 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7294,7 +7294,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 212.852 114.808 0)
+			(at 199.644 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7306,7 +7306,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 214.122 116.713 0)
+			(at 200.914 121.031 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7318,7 +7318,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 211.582 107.188 0)
+			(at 198.374 111.506 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7351,7 +7351,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 211.582 58.928 0)
+		(at 198.374 63.246 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7362,7 +7362,7 @@
 		(fields_autoplaced yes)
 		(uuid "c307860b-24ee-437c-b4c2-78f99d89d4d1")
 		(property "Reference" "#PWR058"
-			(at 212.852 57.658 0)
+			(at 199.644 61.976 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7373,7 +7373,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 211.582 63.2524 0)
+			(at 198.374 67.5704 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7383,7 +7383,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 211.582 58.928 0)
+			(at 198.374 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7394,7 +7394,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 211.582 58.928 0)
+			(at 198.374 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7405,7 +7405,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 211.582 58.928 0)
+			(at 198.374 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7429,7 +7429,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 181.102 43.688 0)
+		(at 167.894 48.006 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7440,7 +7440,7 @@
 		(fields_autoplaced yes)
 		(uuid "c4cf6900-a4aa-4d7d-94dc-34787427cb4d")
 		(property "Reference" "#PWR043"
-			(at 181.102 47.498 0)
+			(at 167.894 51.816 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7451,7 +7451,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 181.102 39.116 0)
+			(at 167.894 43.434 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7461,7 +7461,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.102 43.688 0)
+			(at 167.894 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7472,7 +7472,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.102 43.688 0)
+			(at 167.894 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7483,7 +7483,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 181.102 43.688 0)
+			(at 167.894 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7507,7 +7507,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 181.102 114.808 0)
+		(at 167.894 119.126 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7518,7 +7518,7 @@
 		(fields_autoplaced yes)
 		(uuid "c7233cac-968b-4038-9e67-27166f7cb288")
 		(property "Reference" "#PWR068"
-			(at 182.372 113.538 0)
+			(at 169.164 117.856 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7529,7 +7529,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 181.102 119.1324 0)
+			(at 167.894 123.4504 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7539,7 +7539,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.102 114.808 0)
+			(at 167.894 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7550,7 +7550,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.102 114.808 0)
+			(at 167.894 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7561,7 +7561,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.102 114.808 0)
+			(at 167.894 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7585,7 +7585,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 125.476 32.258 0)
+		(at 112.268 36.576 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7596,7 +7596,7 @@
 		(fields_autoplaced yes)
 		(uuid "c82d8673-a5af-465a-a2db-329f37b84397")
 		(property "Reference" "#PWR041"
-			(at 125.476 36.068 0)
+			(at 112.268 40.386 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7607,7 +7607,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 125.476 27.686 0)
+			(at 112.268 32.004 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7617,7 +7617,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 125.476 32.258 0)
+			(at 112.268 36.576 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7628,7 +7628,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 125.476 32.258 0)
+			(at 112.268 36.576 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7639,7 +7639,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 125.476 32.258 0)
+			(at 112.268 36.576 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7663,7 +7663,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 211.582 43.688 0)
+		(at 198.374 48.006 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7674,7 +7674,7 @@
 		(fields_autoplaced yes)
 		(uuid "c8c78826-8aee-46fe-9b24-f640a87e3bee")
 		(property "Reference" "#PWR045"
-			(at 211.582 47.498 0)
+			(at 198.374 51.816 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7685,7 +7685,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 211.582 39.116 0)
+			(at 198.374 43.434 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7695,7 +7695,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 211.582 43.688 0)
+			(at 198.374 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7706,7 +7706,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 211.582 43.688 0)
+			(at 198.374 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7717,7 +7717,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 211.582 43.688 0)
+			(at 198.374 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7741,7 +7741,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 196.342 71.628 0)
+		(at 183.134 75.946 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7752,7 +7752,7 @@
 		(fields_autoplaced yes)
 		(uuid "ca6129f5-679c-4cfe-b569-2443bd614921")
 		(property "Reference" "#PWR047"
-			(at 196.342 75.438 0)
+			(at 183.134 79.756 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7763,7 +7763,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 196.342 67.056 0)
+			(at 183.134 71.374 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7773,7 +7773,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.342 71.628 0)
+			(at 183.134 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7784,7 +7784,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.342 71.628 0)
+			(at 183.134 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7795,7 +7795,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 196.342 71.628 0)
+			(at 183.134 75.946 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7819,7 +7819,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 211.582 114.808 0)
+		(at 198.374 119.126 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7830,7 +7830,7 @@
 		(fields_autoplaced yes)
 		(uuid "cda00a49-fc10-4ad1-bef2-3c3803465431")
 		(property "Reference" "#PWR070"
-			(at 212.852 113.538 0)
+			(at 199.644 117.856 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7841,7 +7841,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 211.582 119.1324 0)
+			(at 198.374 123.4504 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7851,7 +7851,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 211.582 114.808 0)
+			(at 198.374 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7862,7 +7862,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 211.582 114.808 0)
+			(at 198.374 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7873,7 +7873,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 211.582 114.808 0)
+			(at 198.374 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7897,7 +7897,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 246.126 78.486 0)
+		(at 232.918 82.804 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7907,7 +7907,7 @@
 		(dnp no)
 		(uuid "cef4b3cb-e175-4e68-b8d1-b7d6a7601b39")
 		(property "Reference" "C16"
-			(at 246.761 75.946 0)
+			(at 233.553 80.264 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7918,7 +7918,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 246.761 81.026 0)
+			(at 233.553 85.344 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7929,7 +7929,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 247.0912 82.296 0)
+			(at 233.8832 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7940,7 +7940,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 246.126 78.486 0)
+			(at 232.918 82.804 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7951,7 +7951,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 246.126 78.486 0)
+			(at 232.918 82.804 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7977,7 +7977,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 211.582 86.868 0)
+		(at 198.374 91.186 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7988,7 +7988,7 @@
 		(fields_autoplaced yes)
 		(uuid "d16c4c71-7142-4f22-b2f1-b34e356e82b9")
 		(property "Reference" "#PWR064"
-			(at 212.852 85.598 0)
+			(at 199.644 89.916 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7999,7 +7999,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 211.582 91.1924 0)
+			(at 198.374 95.5104 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8009,7 +8009,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 211.582 86.868 0)
+			(at 198.374 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8020,7 +8020,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 211.582 86.868 0)
+			(at 198.374 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8031,7 +8031,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 211.582 86.868 0)
+			(at 198.374 91.186 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8055,7 +8055,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 68.58 163.322 0)
+		(at 55.372 167.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8066,7 +8066,7 @@
 		(fields_autoplaced yes)
 		(uuid "d19ae98f-6667-4049-b4fe-426bfb1aa53d")
 		(property "Reference" "#PWR080"
-			(at 69.85 162.052 0)
+			(at 56.642 166.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8077,7 +8077,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 68.58 167.6464 0)
+			(at 55.372 171.9644 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8087,7 +8087,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 68.58 163.322 0)
+			(at 55.372 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8098,7 +8098,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 68.58 163.322 0)
+			(at 55.372 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8109,7 +8109,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 68.58 163.322 0)
+			(at 55.372 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8133,7 +8133,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 83.82 120.142 0)
+		(at 70.612 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8144,7 +8144,7 @@
 		(fields_autoplaced yes)
 		(uuid "d49a9ebf-8baf-4f57-9fd0-62e6082a7ca1")
 		(property "Reference" "#PWR059"
-			(at 83.82 123.952 0)
+			(at 70.612 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8155,7 +8155,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 83.82 115.57 0)
+			(at 70.612 119.888 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8165,7 +8165,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 120.142 0)
+			(at 70.612 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8176,7 +8176,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 120.142 0)
+			(at 70.612 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8187,7 +8187,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 83.82 120.142 0)
+			(at 70.612 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8211,7 +8211,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 196.342 99.568 0)
+		(at 183.134 103.886 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8222,7 +8222,7 @@
 		(fields_autoplaced yes)
 		(uuid "d5c55669-d571-4da7-913e-b07851b0bb25")
 		(property "Reference" "#PWR050"
-			(at 196.342 103.378 0)
+			(at 183.134 107.696 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8233,7 +8233,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 196.342 94.996 0)
+			(at 183.134 99.314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8243,7 +8243,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.342 99.568 0)
+			(at 183.134 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8254,7 +8254,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.342 99.568 0)
+			(at 183.134 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8265,7 +8265,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 196.342 99.568 0)
+			(at 183.134 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8289,7 +8289,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 49.276 86.614 0)
+		(at 36.068 90.932 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8299,7 +8299,7 @@
 		(dnp no)
 		(uuid "dbc9d576-0c0a-486e-8eb4-e57b51d6028a")
 		(property "Reference" "SW10"
-			(at 49.276 82.804 0)
+			(at 36.068 87.122 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8309,7 +8309,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 49.276 81.534 0)
+			(at 36.068 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8320,7 +8320,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 49.276 81.534 0)
+			(at 36.068 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8331,7 +8331,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 49.276 81.534 0)
+			(at 36.068 85.852 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8342,7 +8342,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 49.276 86.614 0)
+			(at 36.068 90.932 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8369,7 +8369,7 @@
 	)
 	(symbol
 		(lib_id "SK6812-SIDE:SK6812-SIDE")
-		(at 99.06 155.702 0)
+		(at 85.852 160.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8379,7 +8379,7 @@
 		(dnp no)
 		(uuid "dc83d7ac-2f99-46bb-843b-f70d73679312")
 		(property "Reference" "D27"
-			(at 91.5925 147.2703 0)
+			(at 78.3845 151.5883 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8390,7 +8390,7 @@
 			)
 		)
 		(property "Value" "SK6812"
-			(at 88.0873 149.2134 0)
+			(at 74.8793 153.5314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8401,7 +8401,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_SK6812_4020"
-			(at 100.33 163.322 0)
+			(at 87.122 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8413,7 +8413,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 101.6 165.227 0)
+			(at 88.392 169.545 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8425,7 +8425,7 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, side view"
-			(at 99.06 155.702 0)
+			(at 85.852 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8458,7 +8458,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 246.126 82.296 0)
+		(at 232.918 86.614 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8469,7 +8469,7 @@
 		(fields_autoplaced yes)
 		(uuid "e114d3a0-9793-4b42-9adf-42df01ce4e57")
 		(property "Reference" "#PWR036"
-			(at 246.126 88.646 0)
+			(at 232.918 92.964 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8480,7 +8480,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 246.126 86.4315 0)
+			(at 232.918 90.7495 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8490,7 +8490,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 246.126 82.296 0)
+			(at 232.918 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8501,7 +8501,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 246.126 82.296 0)
+			(at 232.918 86.614 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8512,7 +8512,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 246.126 82.296 0)
+			(at 232.918 86.614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8535,7 +8535,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 211.582 99.568 0)
+		(at 198.374 103.886 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8546,7 +8546,7 @@
 		(fields_autoplaced yes)
 		(uuid "e155f663-fd2c-43a6-800d-3cb037f0c6f7")
 		(property "Reference" "#PWR051"
-			(at 211.582 103.378 0)
+			(at 198.374 107.696 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8557,7 +8557,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 211.582 94.996 0)
+			(at 198.374 99.314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8567,7 +8567,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 211.582 99.568 0)
+			(at 198.374 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8578,7 +8578,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 211.582 99.568 0)
+			(at 198.374 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8589,7 +8589,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 211.582 99.568 0)
+			(at 198.374 103.886 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8613,7 +8613,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 196.342 43.688 0)
+		(at 183.134 48.006 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8624,7 +8624,7 @@
 		(fields_autoplaced yes)
 		(uuid "e6967fb6-2678-4732-b5f8-bc186a040263")
 		(property "Reference" "#PWR044"
-			(at 196.342 47.498 0)
+			(at 183.134 51.816 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8635,7 +8635,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 196.342 39.116 0)
+			(at 183.134 43.434 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8645,7 +8645,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.342 43.688 0)
+			(at 183.134 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8656,7 +8656,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.342 43.688 0)
+			(at 183.134 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8667,7 +8667,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 196.342 43.688 0)
+			(at 183.134 48.006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8691,7 +8691,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 196.342 107.188 0)
+		(at 183.134 111.506 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8701,7 +8701,7 @@
 		(dnp no)
 		(uuid "e6f0d535-2054-44b6-9c71-572450479ce4")
 		(property "Reference" "D20"
-			(at 188.8745 98.7563 0)
+			(at 175.6665 103.0743 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8712,7 +8712,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 185.3693 100.6994 0)
+			(at 172.1613 105.0174 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8723,7 +8723,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 197.612 114.808 0)
+			(at 184.404 119.126 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8735,7 +8735,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 198.882 116.713 0)
+			(at 185.674 121.031 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8747,7 +8747,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.342 107.188 0)
+			(at 183.134 111.506 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8780,7 +8780,7 @@
 	)
 	(symbol
 		(lib_id "ws2812:WS2812")
-		(at 181.102 51.308 0)
+		(at 167.894 55.626 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8790,7 +8790,7 @@
 		(dnp no)
 		(uuid "e8044df2-3a76-41ef-9366-f77db19c6b1d")
 		(property "Reference" "D13"
-			(at 173.6345 42.8763 0)
+			(at 160.4265 47.1943 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8801,7 +8801,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 170.1293 44.8194 0)
+			(at 156.9213 49.1374 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8812,7 +8812,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm_Update"
-			(at 182.372 58.928 0)
+			(at 169.164 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8824,7 +8824,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 183.642 60.833 0)
+			(at 170.434 65.151 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8836,7 +8836,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.102 51.308 0)
+			(at 167.894 55.626 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8869,7 +8869,7 @@
 	)
 	(symbol
 		(lib_id "Jumper:SolderJumper_3_Bridged12")
-		(at 125.476 36.068 180)
+		(at 112.268 40.386 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8880,7 +8880,7 @@
 		(fields_autoplaced yes)
 		(uuid "ee69b621-c2fa-4346-b532-52758c722802")
 		(property "Reference" "JP1"
-			(at 125.476 39.37 0)
+			(at 112.268 43.688 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8890,7 +8890,7 @@
 			)
 		)
 		(property "Value" "LED Power Select"
-			(at 125.476 41.91 0)
+			(at 112.268 46.228 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8900,7 +8900,7 @@
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Bridged2Bar12_RoundedPad1.0x1.5mm"
-			(at 125.476 36.068 0)
+			(at 112.268 40.386 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8911,7 +8911,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 125.476 20.828 0)
+			(at 112.268 25.146 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8922,7 +8922,7 @@
 			)
 		)
 		(property "Description" "3-pole Solder Jumper, pins 1+2 closed/bridged"
-			(at 125.476 23.368 0)
+			(at 112.268 27.686 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8952,7 +8952,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 118.364 151.892 0)
+		(at 105.156 156.21 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8963,7 +8963,7 @@
 		(fields_autoplaced yes)
 		(uuid "ee7eeed2-5a15-4783-a17e-b0121fae257d")
 		(property "Reference" "#PWR038"
-			(at 118.364 158.242 0)
+			(at 105.156 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8974,7 +8974,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 118.364 156.0275 0)
+			(at 105.156 160.3455 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8984,7 +8984,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 118.364 151.892 0)
+			(at 105.156 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8995,7 +8995,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.364 151.892 0)
+			(at 105.156 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9006,7 +9006,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 118.364 151.892 0)
+			(at 105.156 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9029,7 +9029,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 99.06 163.322 0)
+		(at 85.852 167.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9040,7 +9040,7 @@
 		(fields_autoplaced yes)
 		(uuid "f187b256-ae44-4388-839d-624320fcbedb")
 		(property "Reference" "#PWR082"
-			(at 100.33 162.052 0)
+			(at 87.122 166.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9051,7 +9051,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 99.06 167.6464 0)
+			(at 85.852 171.9644 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9061,7 +9061,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 163.322 0)
+			(at 85.852 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9072,7 +9072,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 163.322 0)
+			(at 85.852 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9083,7 +9083,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 163.322 0)
+			(at 85.852 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9107,7 +9107,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 68.58 120.142 0)
+		(at 55.372 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9118,7 +9118,7 @@
 		(fields_autoplaced yes)
 		(uuid "f6703847-61b9-4b92-ab4b-b8d750ce1c53")
 		(property "Reference" "#PWR055"
-			(at 68.58 123.952 0)
+			(at 55.372 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9129,7 +9129,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 68.58 115.57 0)
+			(at 55.372 119.888 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9139,7 +9139,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 68.58 120.142 0)
+			(at 55.372 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9150,7 +9150,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 68.58 120.142 0)
+			(at 55.372 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9161,7 +9161,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 68.58 120.142 0)
+			(at 55.372 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9185,7 +9185,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 128.524 151.892 0)
+		(at 115.316 156.21 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9196,7 +9196,7 @@
 		(fields_autoplaced yes)
 		(uuid "f80cc4b8-9f7f-49b2-8b7f-ddb722ecb9fd")
 		(property "Reference" "#PWR039"
-			(at 128.524 158.242 0)
+			(at 115.316 162.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9207,7 +9207,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 128.524 156.0275 0)
+			(at 115.316 160.3455 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9217,7 +9217,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 128.524 151.892 0)
+			(at 115.316 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9228,7 +9228,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.524 151.892 0)
+			(at 115.316 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9239,7 +9239,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 128.524 151.892 0)
+			(at 115.316 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9262,7 +9262,7 @@
 	)
 	(symbol
 		(lib_id "power:VAA")
-		(at 83.82 148.082 0)
+		(at 70.612 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9273,7 +9273,7 @@
 		(fields_autoplaced yes)
 		(uuid "fa8b4e46-ecff-4333-8f1b-6b002ba73a5c")
 		(property "Reference" "#PWR065"
-			(at 83.82 151.892 0)
+			(at 70.612 156.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9284,7 +9284,7 @@
 			)
 		)
 		(property "Value" "VLED"
-			(at 83.82 143.51 0)
+			(at 70.612 147.828 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9294,7 +9294,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 148.082 0)
+			(at 70.612 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9305,7 +9305,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 148.082 0)
+			(at 70.612 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9316,7 +9316,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VAA\""
-			(at 83.82 148.082 0)
+			(at 70.612 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9340,7 +9340,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 49.276 60.706 0)
+		(at 36.068 65.024 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9350,7 +9350,7 @@
 		(dnp no)
 		(uuid "fbadaad9-4553-4fc1-a721-35302cea84c5")
 		(property "Reference" "SW4"
-			(at 49.276 56.896 0)
+			(at 36.068 61.214 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9360,7 +9360,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 49.276 55.626 0)
+			(at 36.068 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9371,7 +9371,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:CHERRY_SMDLED_100H"
-			(at 49.276 55.626 0)
+			(at 36.068 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9382,7 +9382,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 49.276 55.626 0)
+			(at 36.068 59.944 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9393,7 +9393,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 49.276 60.706 0)
+			(at 36.068 65.024 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9420,7 +9420,7 @@
 	)
 	(symbol
 		(lib_id "SK6812-SIDE:SK6812-SIDE")
-		(at 83.82 155.702 0)
+		(at 70.612 160.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9430,7 +9430,7 @@
 		(dnp no)
 		(uuid "fc754358-9d9d-4bf1-8d3e-04bbbf9bd4f2")
 		(property "Reference" "D26"
-			(at 76.3525 147.2703 0)
+			(at 63.1445 151.5883 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9441,7 +9441,7 @@
 			)
 		)
 		(property "Value" "SK6812"
-			(at 72.8473 149.2134 0)
+			(at 59.6393 153.5314 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9452,7 +9452,7 @@
 			)
 		)
 		(property "Footprint" "lib_fp:LED_SK6812_4020"
-			(at 85.09 163.322 0)
+			(at 71.882 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9464,7 +9464,7 @@
 			)
 		)
 		(property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
-			(at 86.36 165.227 0)
+			(at 73.152 169.545 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9476,7 +9476,7 @@
 			)
 		)
 		(property "Description" "RGB LED with integrated controller, side view"
-			(at 83.82 155.702 0)
+			(at 70.612 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9509,7 +9509,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_ALT")
-		(at 57.404 77.47 90)
+		(at 44.196 81.788 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9519,7 +9519,7 @@
 		(dnp no)
 		(uuid "ff9d9fab-1f95-4980-816d-61d33fa66cc2")
 		(property "Reference" "D7"
-			(at 54.864 77.47 90)
+			(at 41.656 81.788 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9529,7 +9529,7 @@
 			)
 		)
 		(property "Value" "D_Schottky"
-			(at 59.944 77.47 0)
+			(at 46.736 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9540,7 +9540,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 57.404 77.47 0)
+			(at 44.196 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9551,7 +9551,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.404 77.47 0)
+			(at 44.196 81.788 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9562,7 +9562,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 57.404 77.47 0)
+			(at 44.196 81.788 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
