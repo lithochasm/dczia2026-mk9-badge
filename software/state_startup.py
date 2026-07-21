@@ -1,5 +1,5 @@
 import time
-from rainbowio import colorwheel
+from color_tools import scale, wheel
 from setup import pixels, NUM_PIXELS
 from setup import keys
 from state import State
@@ -20,6 +20,7 @@ _DIAG_LEDS = [
 _PHASE_DURATION = 0.14   # seconds per diagonal step
 _HOLD_DURATION  = 0.5    # hold all lit before fading out
 _FADE_DURATION  = 0.4    # fade to black before transitioning
+_FRAME_TIME     = 0.025  # avoid frame-rate-dependent hue and excess writes
 _NUM_PHASES = len(_DIAG_LEDS)
 
 
@@ -32,13 +33,17 @@ class StartupState(State):
     def __init__(self):
         self.phase = 0
         self.phase_start = 0.0
-        self.base_hue = 0
+        self.animation_start = 0.0
+        self.last_frame = 0.0
+        self.fade_colors = [(0, 0, 0)] * NUM_PIXELS
         self.stage = "sweep"   # "sweep" | "hold" | "fade"
 
     def enter(self, machine):
         self.phase = 0
-        self.phase_start = time.monotonic()
-        self.base_hue = 0
+        now = time.monotonic()
+        self.phase_start = now
+        self.animation_start = now
+        self.last_frame = now - _FRAME_TIME
         self.stage = "sweep"
         pixels.fill((0, 0, 0))
         pixels.show()
@@ -57,6 +62,9 @@ class StartupState(State):
             return
 
         now = time.monotonic()
+        if now - self.last_frame < _FRAME_TIME:
+            return
+        self.last_frame = now
         elapsed = now - self.phase_start
 
         if self.stage == "sweep":
@@ -70,24 +78,24 @@ class StartupState(State):
 
             # Render all lit phases so far
             pixels.fill((0, 0, 0))
+            base_hue = int((now - self.animation_start) * 62.0) % 256
             for p in range(min(self.phase + 1, _NUM_PHASES)):
                 age = self.phase - p
-                hue = (self.base_hue + p * 30) % 256
-                color = colorwheel(hue)
+                hue = (base_hue + p * 30) % 256
+                color = wheel(hue)
                 # Older diagonals fade gently
                 fade = max(0.35, 1.0 - age * 0.10)
-                faded = tuple(int(c * fade) for c in color)
+                faded = scale(color, fade)
                 for led in _DIAG_LEDS[p]:
                     pixels[led] = faded
             pixels.show()
-
-            # Advance hue each frame for a rolling rainbow feel
-            self.base_hue = (self.base_hue + 2) % 256
 
         elif self.stage == "hold":
             if elapsed >= _HOLD_DURATION:
                 self.stage = "fade"
                 self.phase_start = now
+                for i in range(NUM_PIXELS):
+                    self.fade_colors[i] = pixels[i]
 
         elif self.stage == "fade":
             if elapsed >= _FADE_DURATION:
@@ -96,6 +104,5 @@ class StartupState(State):
             # Linearly dim everything to black
             t = elapsed / _FADE_DURATION
             for i in range(NUM_PIXELS):
-                r, g, b = pixels[i]
-                pixels[i] = (int(r * (1 - t)), int(g * (1 - t)), int(b * (1 - t)))
+                pixels[i] = scale(self.fade_colors[i], 1.0 - t)
             pixels.show()

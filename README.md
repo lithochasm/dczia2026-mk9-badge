@@ -58,9 +58,9 @@ The **MK9** is a fully functional **3×3 mechanical macropad badge**. Nine real 
 On boot: a rainbow diagonal wipe sweeps across the keys and backlights. Any keypress skips it.
 
 Once running:
-- Background light patterns cycle across all 15 LEDs — rainbow wave, breathing pulse, or sparkle
-- Pressing a key sends a colour ripple expanding outward from that key through all the LEDs
-- Tilt the badge to shift the colour palette; shake it to switch patterns
+- Five spatial light patterns animate all 15 LEDs — prism, vaporwave, breathing rings, starfield, and scanner
+- Pressing a key makes a white-hot impact and a colour ripple that expands across the whole board
+- Tilt steers the patterns; shake to switch modes and trigger a confirmation chase
 - Plug into a computer and it shows up as a numpad (7–9 / 4–6 / 1–3 layout)
 
 ---
@@ -105,5 +105,4 @@ Want to run QMK instead? The hardware is fully compatible; QMK setup instruction
 DCZia is committed to open source hardware and software. All design files and firmware are publicly available.
 
 - **Live CAD (OnShape):** [View the design](https://cad.onshape.com/documents/36884624fbe35c16a5af61a7/w/233227193d278274727a44c3/e/ea987b4b53c4648fa3dc84b6)
-
 

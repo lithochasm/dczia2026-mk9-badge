@@ -1,3 +1,5 @@
+import time
+
 from state import StateMachine
 from state_startup import StartupState
 from state_badge import BadgeState
@@ -10,3 +12,6 @@ machine.go_to_state("startup")
 
 while True:
     machine.update()
+    # A tiny yield keeps the RP2040 cooler and saves battery without adding
+    # perceptible keyboard latency.
+    time.sleep(0.001)

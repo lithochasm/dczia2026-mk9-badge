@@ -6,7 +6,7 @@ import digitalio
 import global_tools
 
 # ---------------------------------------------------------------------------
-# NeoPixels — 15 LEDs on GP22
+# NeoPixels — 15 LEDs on GP21 (net "RGB" in the as-built PCB)
 # LEDs 0-8:  key LEDs, row-major (left→right, top→bottom)
 #            key_number from KeyMatrix = row*3+col = LED index
 # LEDs 9-14: backlight LEDs, clockwise from top-right
@@ -16,7 +16,7 @@ NUM_KEY_LEDS = 9
 BACKLIGHT_START = 9
 
 pixels = neopixel.NeoPixel(
-    board.GP22,
+    board.GP21,
     NUM_PIXELS,
     brightness=global_tools.current_brightness,
     auto_write=False,
@@ -57,7 +57,10 @@ except Exception:
     SAO_AVAILABLE = False
 
 # SAO GPIO pins (configured as inputs with pull-up; change per SAO use case)
-sao1_gpio1 = digitalio.DigitalInOut(board.GP29)
+# The generic Raspberry Pi Pico CircuitPython build exposes GPIO29 as A3
+# (voltage-monitor input on a stock Pico), not as board.GP29.  On this custom
+# RP2040 board the same physical pin is routed to SAO1 G1.
+sao1_gpio1 = digitalio.DigitalInOut(board.A3)
 sao1_gpio2 = digitalio.DigitalInOut(board.GP28)
 sao2_gpio1 = digitalio.DigitalInOut(board.GP12)
 sao2_gpio2 = digitalio.DigitalInOut(board.GP11)

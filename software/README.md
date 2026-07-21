@@ -27,7 +27,7 @@ C0R2  C1R2  C2R2        key# 6  key# 7  key# 8
 | R1     | GP26 |
 | R2     | GP16 |
 
-### NeoPixel LEDs (15 total — GP22)
+### NeoPixel LEDs (15 total — GP21)
 
 **Key LEDs 0–8** sit beneath each key. `LED index == key_number`.
 
@@ -63,7 +63,7 @@ Adafruit MSA301-compatible device.
 
 | Pin     | GPIO |
 |---------|------|
-| SAO1 G1 | GP29 |
+| SAO1 G1 | GP29 (`board.A3` in the generic Pico CircuitPython build) |
 | SAO1 G2 | GP28 |
 | SAO2 G1 | GP12 |
 | SAO2 G2 | GP11 |
@@ -78,6 +78,7 @@ software/
 ├── code.py          — Entry point; creates and runs the state machine
 ├── state.py         — Base State and StateMachine classes
 ├── setup.py         — Hardware initialisation (pixels, keymatrix, I2C, accel)
+├── color_tools.py   — Packed-color conversion and RGB blending helpers
 ├── global_tools.py  — Shared mutable globals (brightness, pattern index)
 ├── state_startup.py — Boot animation: diagonal colour wipe
 └── state_badge.py   — Main badge mode: backgrounds, ripples, HID output
@@ -98,13 +99,17 @@ software/
 
 | # | Pattern       |
 |---|---------------|
-| 0 | Rainbow wave  |
-| 1 | Breathing pulse |
-| 2 | Sparkle / twinkle |
+| 0 | Prism current — flowing spatial rainbow |
+| 1 | Vaporwave — magenta/cyan plasma |
+| 2 | Breathing rings — concentric color pulse |
+| 3 | Starfield — decaying colored twinkles |
+| 4 | Scanner — rotating, tilt-steered light bar |
 
-**Ripple effect** — each keypress launches an expanding wavefront from that key's LED position. Up to N simultaneous ripples are supported. Each key has a unique colour derived from its position on the colour wheel.
+**Key effects** — each keypress gets an immediate white-hot impact followed by an expanding spatial wavefront. Held keys retain a gentle pulse, and up to six simultaneous ripples are composited over the background.
 
-**Accelerometer reactivity** — tilt shifts the hue offset of the background pattern continuously. A vigorous shake (>16 m/s²) cycles to the next pattern after a 2-second cooldown.
+**Accelerometer reactivity** — low-pass gravity gives the patterns smooth tilt control. Shake detection uses the high-pass motion component instead of total acceleration, so simply rotating the badge does not change modes. A successful mode change runs a short confirmation chase.
+
+**Performance / power** — keyboard events are drained independently of the 40 fps renderer, while a 1 ms main-loop yield avoids needlessly pinning the RP2040 at full duty cycle. Background levels are deliberately restrained; reactive peaks get the brightness budget.
 
 **USB keyboard** — when connected to a host, keypresses are sent as numpad keycodes with full N-key rollover:
 
@@ -144,8 +149,17 @@ All available from the [Adafruit CircuitPython Bundle](https://github.com/adafru
 
 ## Extending / Customising
 
-- **Add a new background pattern** — add a `_bg_yourpattern()` method to `BadgeState`, increment `_NUM_PATTERNS`, and add an `elif` branch in `update()`.
+- **Add a new background pattern** — add a `_bg_yourpattern()` method to `BadgeState`, increment `_NUM_PATTERNS`, and add a branch in `_render_background()`.
 - **Remap keys** — edit `_KEY_CODES` in `state_badge.py`. Any `Keycode.*` constant works.
 - **Change key colours** — edit `_KEY_COLORS` in `state_badge.py`.
 - **Add an SAO** — use `i2c_sao` (already initialised) and the `sao*_gpio*` pins from `setup.py`.
 - **Add a new state** — subclass `State`, implement `name`, `enter`, `exit`, `update`; register it with `machine.add_state()` in `code.py`.
+
+## Host-side checks
+
+The RGB helpers have small CPython tests (with `rainbowio` stubbed):
+
+```sh
+python -m unittest discover -s tests -v
+python -m compileall -q software testing tests
+```

@@ -29,7 +29,7 @@ import time
 NUM_PIXELS = 15
 
 pixels = neopixel.NeoPixel(
-    board.GP22, NUM_PIXELS,
+    board.GP21, NUM_PIXELS,
     brightness=0.5,
     auto_write=False,
     pixel_order=neopixel.GRB,
