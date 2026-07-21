@@ -114,6 +114,9 @@ class SetupTests(unittest.TestCase):
         self.assertFalse(hasattr(fake_board, "GP29"))
         self.assertIs(fake_board.A3, self.setup.sao1_gpio1.pin)
 
+    def test_matrix_scan_matches_pcb_diode_direction(self):
+        self.assertTrue(self.setup.keys.options["columns_to_anodes"])
+
 
 if __name__ == "__main__":
     unittest.main()

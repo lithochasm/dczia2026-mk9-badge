@@ -27,6 +27,9 @@ C0R2  C1R2  C2R2        key# 6  key# 7  key# 8
 | R1     | GP26 |
 | R2     | GP16 |
 
+The PCB connects each column through its switch to the diode anode; diode
+cathodes join the row nets. Accordingly, `columns_to_anodes=True` is required.
+
 ### NeoPixel LEDs (15 total — GP21)
 
 **Key LEDs 0–8** sit beneath each key. `LED index == key_number`.

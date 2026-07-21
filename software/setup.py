@@ -32,7 +32,8 @@ pixels = neopixel.NeoPixel(
 # ---------------------------------------------------------------------------
 row_pins = (board.GP27, board.GP26, board.GP16)
 col_pins = (board.GP17, board.GP13, board.GP0)
-keys = keypad.KeyMatrix(row_pins, col_pins, columns_to_anodes=False)
+# PCB path is column -> switch -> diode anode -> diode cathode -> row.
+keys = keypad.KeyMatrix(row_pins, col_pins, columns_to_anodes=True)
 
 # ---------------------------------------------------------------------------
 # Accelerometer — I2C1, SDA=GP18, SCL=GP19

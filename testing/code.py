@@ -37,7 +37,7 @@ pixels = neopixel.NeoPixel(
 
 row_pins = (board.GP27, board.GP26, board.GP16)
 col_pins = (board.GP17, board.GP13, board.GP0)
-keys = keypad.KeyMatrix(row_pins, col_pins, columns_to_anodes=False)
+keys = keypad.KeyMatrix(row_pins, col_pins, columns_to_anodes=True)
 
 try:
     import adafruit_msa3xx
