@@ -29,10 +29,10 @@ does not send a number:
 | 8 | Glacier |
 | 9 | Moonlight |
 
-Every press creates a spatial ripple. Tilt and movement gently flow the light
-intensity in the same direction without changing the selected theme. If the
-accelerometer is not responding, the keys, LEDs, and USB keyboard continue to
-work.
+Every press creates a spatial ripple. Tilt and movement make the current
+theme's light gather like liquid at the downhill edge or corner without
+changing the selected theme. If the accelerometer is not responding, the keys,
+LEDs, and USB keyboard continue to work.
 
 ## Hardware map
 

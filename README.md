@@ -38,7 +38,7 @@ The **MK9** is a fully functional **3×3 mechanical macropad badge**. Nine real 
 
 **Brains & Sensors**
 - RP2040 microcontroller
-- 3-axis accelerometer — movement and tilt steer the lighting intensity
+- 3-axis accelerometer — light pools toward the downhill edge as the badge tilts
 - 2× SAO connectors (standard 6-pin, I2C + 2 GPIO each) — expand with the badge add-on ecosystem
 
 **Power & I/O**
@@ -61,7 +61,7 @@ cross-fades into the active theme.
 Once running:
 - Nine spatial color themes animate all 15 LEDs — one theme for each key
 - Pressing a key makes a white-hot impact and a colour ripple that expands across the whole board
-- Long-press a key to select its theme; movement gently flows brightness across it
+- Long-press a key to select its theme; tilt pools its light at the downhill edge
 - Plug into a computer and it shows up as a numpad (7–9 / 4–6 / 1–3 layout)
 
 ---

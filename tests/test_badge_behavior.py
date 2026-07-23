@@ -1,4 +1,4 @@
-"""Behavior checks for long presses, short taps, and motion flow."""
+"""Behavior checks for long presses, short taps, and liquid light motion."""
 
 import os
 import sys
@@ -67,26 +67,28 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.assertEqual(4, self.badge.theme)
         self.assertEqual([], self.taps)
 
-    def test_movement_changes_flow_without_changing_theme(self):
+    def test_movement_changes_pool_without_changing_theme(self):
         sensor = FakeSensor()
         self.hardware.accelerometer = sensor
         self.badge._update_motion(2000)
         sensor.value = (30.0, 0.0, 9.80665)
         self.badge._update_motion(4000)
         self.assertEqual(0, self.badge.theme)
-        self.assertGreater(self.badge.flow_x, 0.0)
-        self.assertGreater(self.badge.flow_strength, 0.0)
+        self.assertLess(self.badge.pool_x, 0.0)
+        self.assertGreater(self.badge.pool_strength, 0.0)
 
-    def test_motion_flow_brightens_in_direction_of_movement(self):
+    def test_light_pool_brightens_downhill_and_dims_uphill(self):
         self.badge.frame[:] = [(100, 100, 100)] * 15
-        self.badge.flow_x = 1.0
-        self.badge.flow_y = 0.0
-        self.badge.flow_strength = 1.0
+        self.badge.pool_x = 1.0
+        self.badge.pool_y = 0.0
+        self.badge.pool_strength = 1.0
         self.badge.animation_seconds = 0.0
 
-        self.badge._apply_motion_flow()
+        self.badge._apply_light_pool()
 
         self.assertGreater(sum(self.badge.frame[10]), sum(self.badge.frame[13]))
+        self.assertGreater(sum(self.badge.frame[10]), 300)
+        self.assertLess(sum(self.badge.frame[13]), 300)
 
 
 if __name__ == "__main__":

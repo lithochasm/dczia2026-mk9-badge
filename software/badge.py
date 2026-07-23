@@ -4,7 +4,7 @@ import math
 import random
 import time
 
-from color_tools import add, blend, multiply
+from color_tools import add, blend, multiply, smoothstep
 from config import (
     FRAME_MS,
     LED_POSITIONS,
@@ -64,9 +64,9 @@ class Badge:
         self.motion_ready = False
         self.linear_x = 0.0
         self.linear_y = 0.0
-        self.flow_x = 0.0
-        self.flow_y = 0.0
-        self.flow_strength = 0.0
+        self.pool_x = 0.0
+        self.pool_y = 0.0
+        self.pool_strength = 0.0
 
         self.flash_start_ms = time.ticks_add(self.start_ms, -2000)
         self.flash_origin = 0
@@ -133,23 +133,29 @@ class Badge:
         self.tilt_x += (target_x - self.tilt_x) * 0.18
         self.tilt_y += (target_y - self.tilt_y) * 0.18
 
-        # The high-pass component captures movement independently of gravity.
-        # Blend it with tilt so quick gestures push the light immediately while
-        # a held angle leaves a calm pool of brightness on the lower side.
+        # The high-pass component captures quick movement independently of
+        # gravity. The sensor reports proper acceleration, so its X/Y direction
+        # is opposite the downhill direction in which a liquid would settle.
         linear_target_x = max(-1.0, min(1.0, residual_x / 6.0))
         linear_target_y = max(-1.0, min(1.0, residual_y / 6.0))
         self.linear_x += (linear_target_x - self.linear_x) * 0.22
         self.linear_y += (linear_target_y - self.linear_y) * 0.22
 
-        flow_target_x = max(-1.0, min(1.0, self.tilt_x * 0.72 + self.linear_x * 0.62))
-        flow_target_y = max(-1.0, min(1.0, self.tilt_y * 0.72 + self.linear_y * 0.62))
-        self.flow_x += (flow_target_x - self.flow_x) * 0.12
-        self.flow_y += (flow_target_y - self.flow_y) * 0.12
-
-        strength_target = min(1.0, math.sqrt(
-            flow_target_x * flow_target_x + flow_target_y * flow_target_y
+        pool_target_x = max(-1.0, min(
+            1.0, -(self.tilt_x * 1.65 + self.linear_x * 0.45)
         ))
-        self.flow_strength += (strength_target - self.flow_strength) * 0.10
+        pool_target_y = max(-1.0, min(
+            1.0, -(self.tilt_y * 1.65 + self.linear_y * 0.45)
+        ))
+
+        # A slower pool response gives the light visible weight and a small
+        # amount of lag when the badge changes direction.
+        self.pool_x += (pool_target_x - self.pool_x) * 0.10
+        self.pool_y += (pool_target_y - self.pool_y) * 0.10
+        strength_target = min(1.0, math.sqrt(
+            pool_target_x * pool_target_x + pool_target_y * pool_target_y
+        ))
+        self.pool_strength += (strength_target - self.pool_strength) * 0.12
 
     def _update_sparkles(self, delta_ms):
         decay = delta_ms / 620.0
@@ -159,25 +165,34 @@ class Badge:
         if random.getrandbits(8) < chance:
             self.sparkle[random.getrandbits(8) % NUM_PIXELS] = 1.0
 
-    def _apply_motion_flow(self):
-        magnitude = math.sqrt(self.flow_x * self.flow_x + self.flow_y * self.flow_y)
-        strength = self.flow_strength
+    def _apply_light_pool(self):
+        magnitude = math.sqrt(self.pool_x * self.pool_x + self.pool_y * self.pool_y)
+        strength = self.pool_strength
         if magnitude < 0.015 or strength < 0.015:
             return
 
-        direction_x = self.flow_x / magnitude
-        direction_y = self.flow_y / magnitude
+        direction_x = self.pool_x / magnitude
+        direction_y = self.pool_y / magnitude
         for led in range(NUM_PIXELS):
             projection = (_X[led] * direction_x + _Y[led] * direction_y) / 2.25
             projection = max(-1.0, min(1.0, projection))
-            leading = (projection + 1.0) * 0.5
-            traveling = 0.5 + 0.5 * math.sin(
-                self.animation_seconds * 1.85 - projection * 2.8
-            )
-            level = 1.0 + strength * (
-                0.32 * leading
-                - 0.18 * (1.0 - leading)
-                + 0.14 * traveling
+
+            # A slightly uneven shoreline makes the lit area feel liquid
+            # instead of like a plain linear brightness gradient.
+            across = (-_X[led] * direction_y + _Y[led] * direction_x) / 2.25
+            shoreline = 0.12 + math.sin(
+                self.animation_seconds * 2.7 + across * 3.8
+            ) * 0.075 * strength
+            wetness = smoothstep((projection - shoreline) / 0.58)
+            surface = max(0.0, 1.0 - abs(projection - shoreline) / 0.22)
+
+            # At a strong tilt, the uphill area becomes visibly "dry" while
+            # the pool and its bright surface gather at the downhill edge.
+            level = (
+                1.0
+                - 0.72 * strength
+                + 1.28 * strength * wetness
+                + 0.24 * strength * surface
             )
             self.frame[led] = multiply(self.frame[led], level)
 
@@ -257,7 +272,7 @@ class Badge:
                 self.sparkle,
             )
 
-        self._apply_motion_flow()
+        self._apply_light_pool()
         self._apply_ripples(now_ms)
         self._apply_held(now_ms)
         self._apply_theme_flash(now_ms)
