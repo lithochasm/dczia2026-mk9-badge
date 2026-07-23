@@ -18,6 +18,16 @@ def scale(color, level):
     )
 
 
+def multiply(color, level):
+    """Scale RGB while allowing gentle amplification above 100%."""
+    level = max(0.0, level)
+    return (
+        min(255, int(color[0] * level)),
+        min(255, int(color[1] * level)),
+        min(255, int(color[2] * level)),
+    )
+
+
 def blend(first, second, amount):
     amount = clamp(amount)
     inverse = 1.0 - amount

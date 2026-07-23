@@ -4,7 +4,7 @@ import math
 import random
 import time
 
-from color_tools import add, blend
+from color_tools import add, blend, multiply
 from config import (
     FRAME_MS,
     LED_POSITIONS,
@@ -62,8 +62,11 @@ class Badge:
         self.tilt_y = 0.0
         self.gravity = [0.0, 0.0, 9.80665]
         self.motion_ready = False
-        self.shake_energy = 0.0
-        self.last_shake_ms = self.start_ms
+        self.linear_x = 0.0
+        self.linear_y = 0.0
+        self.flow_x = 0.0
+        self.flow_y = 0.0
+        self.flow_strength = 0.0
 
         self.flash_start_ms = time.ticks_add(self.start_ms, -2000)
         self.flash_origin = 0
@@ -118,23 +121,35 @@ class Badge:
             self.motion_ready = True
             return
 
-        residual_squared = 0.0
-        for axis in range(3):
-            residual = acceleration[axis] - self.gravity[axis]
-            residual_squared += residual * residual
-            self.gravity[axis] += residual * 0.12
+        residual_x = acceleration[0] - self.gravity[0]
+        residual_y = acceleration[1] - self.gravity[1]
+        residual_z = acceleration[2] - self.gravity[2]
+        self.gravity[0] += residual_x * 0.12
+        self.gravity[1] += residual_y * 0.12
+        self.gravity[2] += residual_z * 0.12
 
-        residual_total = math.sqrt(residual_squared)
-        self.shake_energy += (residual_total - self.shake_energy) * 0.25
         target_x = max(-1.0, min(1.0, self.gravity[0] / 9.80665))
         target_y = max(-1.0, min(1.0, self.gravity[1] / 9.80665))
         self.tilt_x += (target_x - self.tilt_x) * 0.18
         self.tilt_y += (target_y - self.tilt_y) * 0.18
 
-        if self.shake_energy > 5.5 and time.ticks_diff(now_ms, self.last_shake_ms) > 1200:
-            self.last_shake_ms = now_ms
-            self.shake_energy = 0.0
-            self._select_theme(self.theme + 1, now_ms, self.theme + 1)
+        # The high-pass component captures movement independently of gravity.
+        # Blend it with tilt so quick gestures push the light immediately while
+        # a held angle leaves a calm pool of brightness on the lower side.
+        linear_target_x = max(-1.0, min(1.0, residual_x / 6.0))
+        linear_target_y = max(-1.0, min(1.0, residual_y / 6.0))
+        self.linear_x += (linear_target_x - self.linear_x) * 0.22
+        self.linear_y += (linear_target_y - self.linear_y) * 0.22
+
+        flow_target_x = max(-1.0, min(1.0, self.tilt_x * 0.72 + self.linear_x * 0.62))
+        flow_target_y = max(-1.0, min(1.0, self.tilt_y * 0.72 + self.linear_y * 0.62))
+        self.flow_x += (flow_target_x - self.flow_x) * 0.12
+        self.flow_y += (flow_target_y - self.flow_y) * 0.12
+
+        strength_target = min(1.0, math.sqrt(
+            flow_target_x * flow_target_x + flow_target_y * flow_target_y
+        ))
+        self.flow_strength += (strength_target - self.flow_strength) * 0.10
 
     def _update_sparkles(self, delta_ms):
         decay = delta_ms / 620.0
@@ -143,6 +158,28 @@ class Badge:
         chance = min(255, int(delta_ms * 0.45))
         if random.getrandbits(8) < chance:
             self.sparkle[random.getrandbits(8) % NUM_PIXELS] = 1.0
+
+    def _apply_motion_flow(self):
+        magnitude = math.sqrt(self.flow_x * self.flow_x + self.flow_y * self.flow_y)
+        strength = self.flow_strength
+        if magnitude < 0.015 or strength < 0.015:
+            return
+
+        direction_x = self.flow_x / magnitude
+        direction_y = self.flow_y / magnitude
+        for led in range(NUM_PIXELS):
+            projection = (_X[led] * direction_x + _Y[led] * direction_y) / 2.25
+            projection = max(-1.0, min(1.0, projection))
+            leading = (projection + 1.0) * 0.5
+            traveling = 0.5 + 0.5 * math.sin(
+                self.animation_seconds * 1.85 - projection * 2.8
+            )
+            level = 1.0 + strength * (
+                0.32 * leading
+                - 0.18 * (1.0 - leading)
+                + 0.14 * traveling
+            )
+            self.frame[led] = multiply(self.frame[led], level)
 
     def _apply_ripples(self, now_ms):
         active = []
@@ -220,6 +257,7 @@ class Badge:
                 self.sparkle,
             )
 
+        self._apply_motion_flow()
         self._apply_ripples(now_ms)
         self._apply_held(now_ms)
         self._apply_theme_flash(now_ms)

@@ -20,6 +20,9 @@ class ColorToolsTests(unittest.TestCase):
         self.assertEqual((0, 0, 0), color_tools.scale((10, 20, 30), -1.0))
         self.assertEqual((10, 20, 30), color_tools.scale((10, 20, 30), 2.0))
 
+    def test_multiply_can_brighten_and_saturate(self):
+        self.assertEqual((150, 225, 255), color_tools.multiply((100, 150, 220), 1.5))
+
     def test_blend_interpolates(self):
         self.assertEqual(
             (127, 0, 127),
