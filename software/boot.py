@@ -1,2 +1,5 @@
-import usb_hid
-usb_hid.enable((usb_hid.Device.KEYBOARD,))
+"""Configure composite serial + HID USB before main.py starts."""
+
+from usb_keyboard import init_usb
+
+init_usb()

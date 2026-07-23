@@ -1,38 +1,16 @@
-"""Small RGB helpers shared by the badge animations.
-
-CircuitPython's ``rainbowio.colorwheel`` returns a packed 0xRRGGBB integer.
-NeoPixel accepts that representation directly, but animation math needs RGB
-tuples.  Keeping the conversion here prevents the packed value from being
-accidentally treated as an iterable.
-"""
-
-from rainbowio import colorwheel as _packed_colorwheel
+"""Allocation-light RGB helpers that work on MicroPython and CPython."""
 
 
-def _unit(value):
-    if value < 0.0:
-        return 0.0
-    if value > 1.0:
-        return 1.0
+def clamp(value, low=0.0, high=1.0):
+    if value < low:
+        return low
+    if value > high:
+        return high
     return value
 
 
-def unpack(packed):
-    """Convert a packed 0xRRGGBB value to an (r, g, b) tuple."""
-    return ((packed >> 16) & 0xFF, (packed >> 8) & 0xFF, packed & 0xFF)
-
-
-def wheel(hue, level=1.0):
-    """Return a color-wheel RGB tuple, optionally scaled by ``level``."""
-    color = unpack(_packed_colorwheel(int(hue) & 0xFF))
-    return scale(color, level)
-
-
 def scale(color, level):
-    """Scale an RGB tuple without allowing negative output."""
-    level = _unit(level)
-    if level >= 1.0:
-        return color
+    level = clamp(level)
     return (
         int(color[0] * level),
         int(color[1] * level),
@@ -41,8 +19,7 @@ def scale(color, level):
 
 
 def blend(first, second, amount):
-    """Linearly blend from ``first`` to ``second``."""
-    amount = _unit(amount)
+    amount = clamp(amount)
     inverse = 1.0 - amount
     return (
         int(first[0] * inverse + second[0] * amount),
@@ -52,10 +29,36 @@ def blend(first, second, amount):
 
 
 def add(base, overlay, level=1.0):
-    """Add an RGB overlay with saturation at 255."""
-    level = _unit(level)
+    level = clamp(level)
     return (
         min(255, base[0] + int(overlay[0] * level)),
         min(255, base[1] + int(overlay[1] * level)),
         min(255, base[2] + int(overlay[2] * level)),
     )
+
+
+def wheel(position, level=1.0):
+    """Return a smooth RGB rainbow color for position 0..255."""
+    position = int(position) & 255
+    if position < 85:
+        color = (255 - position * 3, position * 3, 0)
+    elif position < 170:
+        position -= 85
+        color = (0, 255 - position * 3, position * 3)
+    else:
+        position -= 170
+        color = (position * 3, 0, 255 - position * 3)
+    return scale(color, level)
+
+
+def palette(colors, position):
+    """Sample a looping palette using a normalized position."""
+    position %= 1.0
+    scaled = position * len(colors)
+    index = int(scaled) % len(colors)
+    return blend(colors[index], colors[(index + 1) % len(colors)], scaled - int(scaled))
+
+
+def smoothstep(value):
+    value = clamp(value)
+    return value * value * (3.0 - 2.0 * value)

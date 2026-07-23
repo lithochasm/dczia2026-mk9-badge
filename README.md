@@ -21,7 +21,7 @@ It blinks. It types. You can wear it around your neck and then set it on your de
 
 ## About
 
-The **MK9** is a fully functional **3×3 mechanical macropad badge**. Nine real mechanical switches, per-key RGB lighting, ambient underglow, an accelerometer that actually does something interesting, SAO support, and CircuitPython firmware out of the box — all in a package sized to hang around your neck at DEF CON and survive the week.
+The **MK9** is a fully functional **3×3 mechanical macropad badge**. Nine real mechanical switches, per-key RGB lighting, ambient underglow, an accelerometer that actually does something interesting, SAO support, and MicroPython firmware — all in a package sized to hang around your neck at DEF CON and survive the week.
 
 ---
 
@@ -30,7 +30,7 @@ The **MK9** is a fully functional **3×3 mechanical macropad badge**. Nine real 
 **Keys**
 - 9× mechanical switches in a 3×3 grid — standard MX footprint, swap keycaps as you please
 - Ships with translucent blue keycaps
-- Full N-key rollover USB HID keyboard when plugged into a computer
+- USB HID numpad when plugged into a computer
 
 **Lighting**
 - 9× WS2812B per-key RGB LEDs — one under each switch
@@ -48,19 +48,20 @@ The **MK9** is a fully functional **3×3 mechanical macropad badge**. Nine real 
 - Reset button + BOOTSEL button for easy firmware flashing
 
 **Firmware**
-- Ships with CircuitPython firmware
+- Native MicroPython firmware with bundled USB HID support
 - QMK-compatible hardware — reflash and run it as a full QMK macropad
 
 ---
 
 ## What It Does Out of the Box
 
-On boot: a rainbow diagonal wipe sweeps across the keys and backlights. Any keypress skips it.
+On boot: a smoothly fading rainbow flows across all keys and backlights, then
+cross-fades into the active theme.
 
 Once running:
-- Five spatial light patterns animate all 15 LEDs — prism, vaporwave, breathing rings, starfield, and scanner
+- Nine spatial color themes animate all 15 LEDs — one theme for each key
 - Pressing a key makes a white-hot impact and a colour ripple that expands across the whole board
-- Tilt steers the patterns; shake to switch modes and trigger a confirmation chase
+- Long-press a key to select its theme; shake advances themes; tilt steers them
 - Plug into a computer and it shows up as a numpad (7–9 / 4–6 / 1–3 layout)
 
 ---
@@ -70,7 +71,7 @@ Once running:
 ```
 mk9-badge/
 ├── hardware/   — KiCad design files, BOM, fabrication outputs
-└── software/   — CircuitPython firmware
+└── software/   — MicroPython firmware
 ```
 
 - [Hardware →](hardware/README.md) — schematics, PCB layout, drill files, BOM
@@ -85,18 +86,21 @@ mk9-badge/
 
 ## Programming / Updating
 
-The badge runs [CircuitPython](https://circuitpython.org). To update the firmware:
+The badge runs [MicroPython](https://micropython.org). To install or update it:
 
 1. Hold **BOOTSEL** while plugging the badge into your computer — it mounts as `RPI-RP2`.
-2. Drag the CircuitPython `.uf2` onto the drive. It reboots as `CIRCUITPY`.
-3. Copy the `lib/` folder contents to `CIRCUITPY/lib/` (see [software/README.md](software/README.md) for the library list).
-4. Copy all `.py` files from `software/` to the root of `CIRCUITPY`.
+2. Drag [`firmware/RPI_PICO-20260406-v1.28.0.uf2`](firmware/RPI_PICO-20260406-v1.28.0.uf2)
+   onto the drive.
+3. Use Thonny or `mpremote` to upload the `software/*.py` files to `/` and
+   `software/lib/` to `/lib/` on the badge.
 
-The badge restarts automatically. If it gets into a weird state, delete everything on `CIRCUITPY` and start fresh — it won't brick.
+Full commands and the recommended firmware version are in the
+[software flashing guide](software/README.md#install-on-the-badge).
 
 Want to run QMK instead? The hardware is fully compatible; QMK setup instructions will be posted separately.
 
-**Recommended IDEs:** Visual Studio Code with the [CircuitPython extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), or [Thonny](https://thonny.org). A Commodore 64 with a serial adapter also works but is left as an exercise for the reader.
+**Recommended tool:** [Thonny](https://thonny.org), which can edit and upload
+files directly through the MicroPython serial connection.
 
 ---
 
@@ -105,4 +109,3 @@ Want to run QMK instead? The hardware is fully compatible; QMK setup instruction
 DCZia is committed to open source hardware and software. All design files and firmware are publicly available.
 
 - **Live CAD (OnShape):** [View the design](https://cad.onshape.com/documents/36884624fbe35c16a5af61a7/w/233227193d278274727a44c3/e/ea987b4b53c4648fa3dc84b6)
-
