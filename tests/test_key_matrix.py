@@ -7,7 +7,7 @@ import unittest
 REPOSITORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPOSITORY, "software"))
 
-from config import DEBOUNCE_SCANS
+from config import DEBOUNCE_SCANS, KEY_SCAN_MS
 from key_matrix import KeyMatrix
 
 
@@ -35,7 +35,7 @@ class KeyMatrixTests(unittest.TestCase):
         samples[5] = True
         events = ()
         for scan in range(1, DEBOUNCE_SCANS + 1):
-            events = matrix.update(scan * 4)
+            events = matrix.update(scan * KEY_SCAN_MS)
 
         self.assertEqual(1, len(events))
         self.assertEqual(5, events[0].key)
@@ -47,9 +47,18 @@ class KeyMatrixTests(unittest.TestCase):
         samples = [False] * 9
         matrix._raw = lambda: list(samples)
         samples[0] = True
-        matrix.update(4)
+        matrix.update(KEY_SCAN_MS)
         samples[0] = False
-        self.assertFalse(matrix.update(8))
+        self.assertFalse(matrix.update(KEY_SCAN_MS * 2))
+
+    def test_debounce_budget_stays_under_ten_milliseconds(self):
+        self.assertLess(KEY_SCAN_MS * DEBOUNCE_SCANS, 10)
+
+    def test_raw_scan_reuses_its_buffer(self):
+        matrix = KeyMatrix(FakePin)
+        first = matrix._raw()
+        second = matrix._raw()
+        self.assertIs(first, second)
 
     def test_uses_as_built_row_and_column_pins(self):
         matrix = KeyMatrix(FakePin)

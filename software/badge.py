@@ -23,6 +23,17 @@ _FLASH_ORDER = (14, 0, 1, 2, 9, 10, 5, 8, 11, 12, 7, 6, 13, 3, 4)
 _RIPPLE_SPEED = 2.5
 _RIPPLE_WIDTH = 0.58
 _RIPPLE_MAX_RADIUS = 4.25
+_ROTATION_MIN_ACCEL = 2.0
+_POOL_LEVEL = 1.0
+_ROTATION_FILTER = 0.85
+_POOL_SPRING = 0.38
+_POOL_DAMPING = 0.62
+_Z_FILTER = 0.30
+_POOL_Z_FULL = 7.0
+_POOL_Z_OFF = 8.6
+_POOL_STRENGTH_RESPONSE = 0.45
+_PI = 3.14159265
+_TAU = 6.28318531
 
 _X = tuple(position[1] - 1.0 for position in LED_POSITIONS)
 _Y = tuple(position[0] - 1.0 for position in LED_POSITIONS)
@@ -58,14 +69,15 @@ class Badge:
         self.ripples = []
         self.sparkle = [0.0] * NUM_PIXELS
 
-        self.tilt_x = 0.0
-        self.tilt_y = 0.0
-        self.gravity = [0.0, 0.0, 9.80665]
+        self.gravity_x = 0.0
+        self.gravity_y = 0.0
+        self.gravity_z = 9.80665
         self.motion_ready = False
-        self.linear_x = 0.0
-        self.linear_y = 0.0
         self.pool_x = 0.0
         self.pool_y = 0.0
+        self.pool_angle = 0.0
+        self.pool_angular_velocity = 0.0
+        self.pool_direction_ready = False
         self.pool_strength = 0.0
 
         self.flash_start_ms = time.ticks_add(self.start_ms, -2000)
@@ -116,46 +128,69 @@ class Badge:
         except Exception:
             return
 
+        acceleration_x = acceleration[0]
+        acceleration_y = acceleration[1]
+        acceleration_z = acceleration[2]
         if not self.motion_ready:
-            self.gravity[:] = acceleration
+            self.gravity_x = acceleration_x
+            self.gravity_y = acceleration_y
+            self.gravity_z = acceleration_z
             self.motion_ready = True
+        else:
+            # Filter sensor chatter, but respond quickly enough for the pool to
+            # visibly follow rotation of a hanging badge.
+            self.gravity_x += (
+                acceleration_x - self.gravity_x
+            ) * _ROTATION_FILTER
+            self.gravity_y += (
+                acceleration_y - self.gravity_y
+            ) * _ROTATION_FILTER
+            self.gravity_z += (
+                acceleration_z - self.gravity_z
+            ) * _Z_FILTER
+
+        magnitude = math.sqrt(
+            self.gravity_x * self.gravity_x + self.gravity_y * self.gravity_y
+        )
+        z_gate = smoothstep(
+            (_POOL_Z_OFF - abs(self.gravity_z))
+            / (_POOL_Z_OFF - _POOL_Z_FULL)
+        )
+        if magnitude < _ROTATION_MIN_ACCEL or z_gate < 0.01:
+            # When the badge is nearly face-up, an accelerometer cannot measure
+            # rotation around Z. Fade the pool instead of amplifying noise.
+            self.pool_angular_velocity *= 0.50
+            self.pool_direction_ready = False
+            self.pool_strength += (
+                0.0 - self.pool_strength
+            ) * _POOL_STRENGTH_RESPONSE
             return
 
-        residual_x = acceleration[0] - self.gravity[0]
-        residual_y = acceleration[1] - self.gravity[1]
-        residual_z = acceleration[2] - self.gravity[2]
-        self.gravity[0] += residual_x * 0.12
-        self.gravity[1] += residual_y * 0.12
-        self.gravity[2] += residual_z * 0.12
-
-        target_x = max(-1.0, min(1.0, self.gravity[0] / 9.80665))
-        target_y = max(-1.0, min(1.0, self.gravity[1] / 9.80665))
-        self.tilt_x += (target_x - self.tilt_x) * 0.18
-        self.tilt_y += (target_y - self.tilt_y) * 0.18
-
-        # The high-pass component captures quick movement independently of
-        # gravity. The sensor reports proper acceleration, so its X/Y direction
-        # is opposite the downhill direction in which a liquid would settle.
-        linear_target_x = max(-1.0, min(1.0, residual_x / 6.0))
-        linear_target_y = max(-1.0, min(1.0, residual_y / 6.0))
-        self.linear_x += (linear_target_x - self.linear_x) * 0.22
-        self.linear_y += (linear_target_y - self.linear_y) * 0.22
-
-        pool_target_x = max(-1.0, min(
-            1.0, -(self.tilt_x * 1.65 + self.linear_x * 0.45)
-        ))
-        pool_target_y = max(-1.0, min(
-            1.0, -(self.tilt_y * 1.65 + self.linear_y * 0.45)
-        ))
-
-        # A slower pool response gives the light visible weight and a small
-        # amount of lag when the badge changes direction.
-        self.pool_x += (pool_target_x - self.pool_x) * 0.10
-        self.pool_y += (pool_target_y - self.pool_y) * 0.10
-        strength_target = min(1.0, math.sqrt(
-            pool_target_x * pool_target_x + pool_target_y * pool_target_y
-        ))
-        self.pool_strength += (strength_target - self.pool_strength) * 0.12
+        # Normalize X/Y so forward/back angle cannot change pool strength.
+        # Proper acceleration points uphill, hence the minus signs. Z only
+        # suppresses the effect near face-up; it does not steer the pool.
+        pool_target_x = -self.gravity_x / magnitude
+        pool_target_y = -self.gravity_y / magnitude
+        target_angle = math.atan2(pool_target_y, pool_target_x)
+        if not self.pool_direction_ready:
+            self.pool_angle = target_angle
+            self.pool_angular_velocity = 0.0
+            self.pool_direction_ready = True
+        else:
+            angle_error = (
+                target_angle - self.pool_angle + _PI
+            ) % _TAU - _PI
+            self.pool_angular_velocity += angle_error * _POOL_SPRING
+            self.pool_angular_velocity *= _POOL_DAMPING
+            self.pool_angle = (
+                self.pool_angle + self.pool_angular_velocity + _PI
+            ) % _TAU - _PI
+        self.pool_x = math.cos(self.pool_angle)
+        self.pool_y = math.sin(self.pool_angle)
+        strength_target = _POOL_LEVEL * z_gate
+        self.pool_strength += (
+            strength_target - self.pool_strength
+        ) * _POOL_STRENGTH_RESPONSE
 
     def _update_sparkles(self, delta_ms):
         decay = delta_ms / 620.0
@@ -173,6 +208,7 @@ class Badge:
 
         direction_x = self.pool_x / magnitude
         direction_y = self.pool_y / magnitude
+        slosh_speed = min(1.0, abs(self.pool_angular_velocity) * 1.8)
         for led in range(NUM_PIXELS):
             projection = (_X[led] * direction_x + _Y[led] * direction_y) / 2.25
             projection = max(-1.0, min(1.0, projection))
@@ -182,19 +218,23 @@ class Badge:
             across = (-_X[led] * direction_y + _Y[led] * direction_x) / 2.25
             shoreline = 0.12 + math.sin(
                 self.animation_seconds * 2.7 + across * 3.8
-            ) * 0.075 * strength
+            ) * (0.075 + slosh_speed * 0.09) * strength
             wetness = smoothstep((projection - shoreline) / 0.58)
             surface = max(0.0, 1.0 - abs(projection - shoreline) / 0.22)
 
-            # At a strong tilt, the uphill area becomes visibly "dry" while
-            # the pool and its bright surface gather at the downhill edge.
+            # Make the uphill area visibly "dry" while the pool and its bright
+            # surface gather at the downhill edge.
             level = (
                 1.0
-                - 0.72 * strength
-                + 1.28 * strength * wetness
-                + 0.24 * strength * surface
+                - 0.92 * strength
+                + 1.95 * strength * wetness
+                + 0.55 * strength * surface
             )
-            self.frame[led] = multiply(self.frame[led], level)
+            self.frame[led] = add(
+                multiply(self.frame[led], level),
+                theme_accent(self.theme),
+                strength * (0.30 * wetness + 0.35 * surface),
+            )
 
     def _apply_ripples(self, now_ms):
         active = []
@@ -258,8 +298,8 @@ class Badge:
                 self.frame,
                 startup_elapsed,
                 self.theme,
-                self.tilt_x,
-                self.tilt_y,
+                0.0,
+                0.0,
                 self.sparkle,
             )
         else:
@@ -267,10 +307,17 @@ class Badge:
                 self.frame,
                 self.theme,
                 self.animation_seconds,
-                self.tilt_x,
-                self.tilt_y,
+                0.0,
+                0.0,
                 self.sparkle,
             )
+
+        # Theme rendering is the longest CPU-bound stage. Service input again
+        # before overlays and the LED write so a frame cannot monopolize the
+        # scanner for its full duration.
+        now_ms = time.ticks_ms()
+        self._handle_keys(now_ms)
+        usb_keyboard.update(now_ms)
 
         self._apply_light_pool()
         self._apply_ripples(now_ms)

@@ -37,10 +37,12 @@ class KeyMatrix:
         self.columns = tuple(pin_class(pin, pin_class.OUT, value=0) for pin in COLUMN_PINS)
         self._stable = [False] * 9
         self._counts = [0] * 9
+        self._raw_state = [False] * 9
+        self._events = []
         self._last_scan = 0
 
     def _raw(self):
-        result = [False] * 9
+        result = self._raw_state
         for column_index, column in enumerate(self.columns):
             column.value(1)
             _sleep_us(2)
@@ -54,7 +56,8 @@ class KeyMatrix:
             return ()
         self._last_scan = now_ms
         raw = self._raw()
-        events = []
+        events = self._events
+        del events[:]
         for key in range(9):
             if raw[key] == self._stable[key]:
                 self._counts[key] = 0

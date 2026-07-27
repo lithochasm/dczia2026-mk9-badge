@@ -29,10 +29,13 @@ does not send a number:
 | 8 | Glacier |
 | 9 | Moonlight |
 
-Every press creates a spatial ripple. Tilt and movement make the current
-theme's light gather like liquid at the downhill edge or corner without
-changing the selected theme. If the accelerometer is not responding, the keys,
-LEDs, and USB keyboard continue to work.
+Every press creates a spatial ripple. As a hanging badge rotates, the current
+theme's light quickly follows physical down and gathers like liquid at the
+lowest edge or corner, with a short overshoot and settling shoreline wobble.
+Forward/back tilt and quick movement do not change the pool while it is
+hanging; Z smoothly suppresses the effect when the badge is laid flat. If the
+accelerometer is not responding, the keys, LEDs, and USB keyboard continue to
+work.
 
 ## Hardware map
 

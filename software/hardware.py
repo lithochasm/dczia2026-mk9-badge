@@ -3,7 +3,6 @@
 from machine import I2C, Pin, SoftI2C
 import neopixel
 
-from color_tools import scale
 from config import (
     ACCEL_I2C_ID,
     ACCEL_SCL_PIN,
@@ -17,6 +16,10 @@ from config import (
 )
 from key_matrix import KeyMatrix
 from msa301 import MSA301
+
+_BRIGHTNESS = bytes([
+    int(value * GLOBAL_BRIGHTNESS) for value in range(256)
+])
 
 
 class Hardware:
@@ -57,8 +60,16 @@ class Hardware:
     def show(self, frame=None):
         if frame is None:
             frame = self.frame
-        for index in range(NUM_PIXELS):
-            self.pixels[index] = scale(frame[index], GLOBAL_BRIGHTNESS)
+        # NeoPixel stores three-channel pixels in GRB byte order. Filling the
+        # buffer directly avoids 15 tuple allocations and method calls per
+        # frame; the lookup also replaces repeated floating-point scaling.
+        buffer = self.pixels.buf
+        offset = 0
+        for color in frame:
+            buffer[offset] = _BRIGHTNESS[color[1]]
+            buffer[offset + 1] = _BRIGHTNESS[color[0]]
+            buffer[offset + 2] = _BRIGHTNESS[color[2]]
+            offset += 3
         self.pixels.write()
 
     def off(self):
