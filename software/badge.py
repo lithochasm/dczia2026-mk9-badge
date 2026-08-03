@@ -15,6 +15,7 @@ from config import (
     STARTUP_MS,
     THEME_NAMES,
 )
+from serial_menu import SerialMenu
 from themes import render_startup, render_theme, theme_accent
 import usb_keyboard
 
@@ -55,8 +56,9 @@ _DISTANCE = _distance_map()
 
 
 class Badge:
-    def __init__(self, hardware):
+    def __init__(self, hardware, serial_stream=None):
         self.hardware = hardware
+        self.serial_menu = SerialMenu(self, hardware, serial_stream)
         self.frame = hardware.frame
         self.theme = 0
         self.start_ms = time.ticks_ms()
@@ -282,6 +284,7 @@ class Badge:
         now_ms = time.ticks_ms()
         self._handle_keys(now_ms)
         usb_keyboard.update(now_ms)
+        self.serial_menu.update(now_ms)
 
         delta_ms = time.ticks_diff(now_ms, self.last_frame_ms)
         if delta_ms < FRAME_MS:
@@ -314,10 +317,11 @@ class Badge:
 
         # Theme rendering is the longest CPU-bound stage. Service input again
         # before overlays and the LED write so a frame cannot monopolize the
-        # scanner for its full duration.
+        # scanner, USB HID output, or the serial console for its full duration.
         now_ms = time.ticks_ms()
         self._handle_keys(now_ms)
         usb_keyboard.update(now_ms)
+        self.serial_menu.update(now_ms)
 
         self._apply_light_pool()
         self._apply_ripples(now_ms)

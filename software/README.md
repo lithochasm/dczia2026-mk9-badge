@@ -65,8 +65,20 @@ software/
 ├── color_tools.py   portable RGB math
 ├── config.py        pins and user-tunable timing/brightness
 ├── usb_keyboard.py  non-blocking numpad reports
+├── serial_menu.py   typed USB-serial console (help/status/theme/brightness/accel/reset/bootloader)
 └── lib/usb/         official MicroPython USB device libraries
 ```
+
+## Serial console
+
+While the badge is running (not just at the REPL), the USB-CDC serial
+connection also accepts typed commands — connect with `mpremote connect auto
+repl`, Thonny's shell, or any serial terminal, then type `help` and press
+Enter for the full command listing (`status`, `theme [n|name]`, `brightness
+[0-100]`, `accel`, `reset`, `bootloader`). Typing anything at all before
+you've seen the listing prints it automatically. Ctrl-C still drops to the
+real MicroPython REPL and kills the running badge script, same as always —
+that's unrelated to and unaffected by the console.
 
 ## Install on the badge
 
@@ -104,6 +116,8 @@ while adding the HID keyboard.
 
 Edit `config.py` to change global brightness, long-press time, frame rate, or
 pin assignments. Add or modify palettes and renderers in `themes.py`.
+`GLOBAL_BRIGHTNESS` is only the boot-time default — the serial console's
+`brightness` command can also change it live, without reflashing.
 
 ## Verification
 

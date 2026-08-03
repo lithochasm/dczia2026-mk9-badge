@@ -17,9 +17,8 @@ from config import (
 from key_matrix import KeyMatrix
 from msa301 import MSA301
 
-_BRIGHTNESS = bytes([
-    int(value * GLOBAL_BRIGHTNESS) for value in range(256)
-])
+def _brightness_lut(level):
+    return bytes([int(value * level) for value in range(256)])
 
 
 class Hardware:
@@ -27,6 +26,8 @@ class Hardware:
         self.pixels = neopixel.NeoPixel(Pin(PIXEL_PIN, Pin.OUT), NUM_PIXELS)
         self.keys = KeyMatrix()
         self.frame = [(0, 0, 0)] * NUM_PIXELS
+        self.brightness = GLOBAL_BRIGHTNESS
+        self._lut = _brightness_lut(self.brightness)
 
         self.accel_i2c = None
         self.accelerometer = None
@@ -57,6 +58,10 @@ class Hardware:
         except Exception as error:
             self.sao_error = error
 
+    def set_brightness(self, level):
+        self.brightness = max(0.0, min(1.0, level))
+        self._lut = _brightness_lut(self.brightness)
+
     def show(self, frame=None):
         if frame is None:
             frame = self.frame
@@ -64,11 +69,12 @@ class Hardware:
         # buffer directly avoids 15 tuple allocations and method calls per
         # frame; the lookup also replaces repeated floating-point scaling.
         buffer = self.pixels.buf
+        lut = self._lut
         offset = 0
         for color in frame:
-            buffer[offset] = _BRIGHTNESS[color[1]]
-            buffer[offset + 1] = _BRIGHTNESS[color[0]]
-            buffer[offset + 2] = _BRIGHTNESS[color[2]]
+            buffer[offset] = lut[color[1]]
+            buffer[offset + 1] = lut[color[0]]
+            buffer[offset + 2] = lut[color[2]]
             offset += 3
         self.pixels.write()
 
