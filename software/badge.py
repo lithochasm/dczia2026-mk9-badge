@@ -18,6 +18,7 @@ from config import (
 from serial_menu import SerialMenu
 from themes import render_startup, render_theme, theme_accent
 import usb_keyboard
+import user_config
 
 _WHITE = (255, 255, 255)
 _FLASH_ORDER = (14, 0, 1, 2, 9, 10, 5, 8, 11, 12, 7, 6, 13, 3, 4)
@@ -106,6 +107,7 @@ class Badge:
         self.theme = theme % len(THEME_NAMES)
         self.flash_start_ms = now_ms
         self.flash_origin = origin
+        user_config.save(self.theme, self.hardware.brightness)
 
     def _handle_keys(self, now_ms):
         for event in self.hardware.keys.update(now_ms):

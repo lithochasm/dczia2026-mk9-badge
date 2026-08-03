@@ -66,6 +66,7 @@ software/
 ├── config.py        pins and user-tunable timing/brightness
 ├── usb_keyboard.py  non-blocking numpad reports
 ├── serial_menu.py   typed USB-serial console (help/status/theme/brightness/accel/reset/bootloader)
+├── user_config.py   persisted theme/brightness settings, loaded on boot
 └── lib/usb/         official MicroPython USB device libraries
 ```
 
@@ -79,6 +80,10 @@ Enter for the full command listing (`status`, `theme [n|name]`, `brightness
 you've seen the listing prints it automatically. Ctrl-C still drops to the
 real MicroPython REPL and kills the running badge script, same as always —
 that's unrelated to and unaffected by the console.
+
+Changing the theme (long-press or `theme`) or `brightness` saves both
+settings to `/user_config.json` on the badge's flash filesystem, and they're
+restored automatically the next time the badge boots.
 
 ## Install on the badge
 
@@ -117,7 +122,9 @@ while adding the HID keyboard.
 Edit `config.py` to change global brightness, long-press time, frame rate, or
 pin assignments. Add or modify palettes and renderers in `themes.py`.
 `GLOBAL_BRIGHTNESS` is only the boot-time default — the serial console's
-`brightness` command can also change it live, without reflashing.
+`brightness` command can also change it live, without reflashing, and that
+choice (along with the active theme) persists across reboots via
+`user_config.py`.
 
 ## Verification
 

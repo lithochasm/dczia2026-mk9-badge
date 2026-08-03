@@ -30,6 +30,7 @@ class FakeHardware:
         self.frame = [(0, 0, 0)] * 15
         self.keys = FakeKeys()
         self.accelerometer = None
+        self.brightness = 0.3
 
     def show(self, frame):
         pass
@@ -51,11 +52,15 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.taps = []
         self.original_tap = badge.usb_keyboard.tap
         badge.usb_keyboard.tap = self.taps.append
+        self.saved_configs = []
+        self.original_save = badge.user_config.save
+        badge.user_config.save = lambda theme, brightness: self.saved_configs.append((theme, brightness))
         self.hardware = FakeHardware()
         self.badge = badge.Badge(self.hardware)
 
     def tearDown(self):
         badge.usb_keyboard.tap = self.original_tap
+        badge.user_config.save = self.original_save
 
     def test_short_press_types_numpad_key(self):
         self.badge._press(2, 1000)
@@ -176,6 +181,16 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.assertGreater(sum(self.badge.frame[10]), sum(self.badge.frame[13]))
         self.assertGreater(sum(self.badge.frame[10]), 300)
         self.assertLess(sum(self.badge.frame[13]), 300)
+
+    def test_long_press_theme_change_saves_user_config(self):
+        self.badge._press(4, 1000)
+        self.badge._handle_keys(1750)
+        self.assertEqual([(4, 0.3)], self.saved_configs)
+
+    def test_short_press_does_not_save_user_config(self):
+        self.badge._press(2, 1000)
+        self.badge._release(2)
+        self.assertEqual([], self.saved_configs)
 
 
 if __name__ == "__main__":

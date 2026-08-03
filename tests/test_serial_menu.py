@@ -90,9 +90,13 @@ class SerialMenuTests(unittest.TestCase):
     def setUp(self):
         self.original_ready = serial_menu.usb_keyboard.ready
         serial_menu.usb_keyboard.ready = lambda: True
+        self.saved_configs = []
+        self.original_save = serial_menu.user_config.save
+        serial_menu.user_config.save = lambda theme, brightness: self.saved_configs.append((theme, brightness))
 
     def tearDown(self):
         serial_menu.usb_keyboard.ready = self.original_ready
+        serial_menu.user_config.save = self.original_save
 
     def test_disabled_when_stream_is_none(self):
         badge = FakeBadge()
@@ -217,6 +221,19 @@ class SerialMenuTests(unittest.TestCase):
         stream.feed("brightness -20\n")
         menu.update(1000)
         self.assertEqual(0.0, hardware.set_brightness_calls[-1])
+
+    def test_brightness_set_saves_user_config(self):
+        menu, stream, badge, _ = make_menu()
+        badge.theme = 3
+        stream.feed("brightness 60\n")
+        menu.update(1000)
+        self.assertEqual([(3, 0.6)], self.saved_configs)
+
+    def test_brightness_get_does_not_save_user_config(self):
+        menu, stream, _, _ = make_menu()
+        stream.feed("brightness\n")
+        menu.update(1000)
+        self.assertEqual([], self.saved_configs)
 
     def test_brightness_rejects_non_numeric_argument(self):
         menu, stream, _, hardware = make_menu()

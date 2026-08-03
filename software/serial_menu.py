@@ -11,6 +11,7 @@ import time
 
 from config import THEME_NAMES
 import usb_keyboard
+import user_config
 
 _MAX_CHARS_PER_UPDATE = 32
 _MAX_LINE_LENGTH = 64
@@ -118,6 +119,7 @@ def _cmd_brightness(menu, args, now_ms):
         return
     percent = max(0.0, min(100.0, percent))
     menu.hardware.set_brightness(percent / 100.0)
+    user_config.save(menu.badge.theme, menu.hardware.brightness)
     menu._write_line("brightness ->", int(percent + 0.5), "%")
 
 
