@@ -41,6 +41,7 @@ class FakeBadge:
     def __init__(self):
         self.theme = 0
         self.start_ms = 0
+        self.party_bpm = 175.0
         self.select_calls = []
 
     @property
@@ -78,6 +79,24 @@ class RaisingSensor:
         raise OSError("bus error")
 
 
+class FakeGame:
+    def __init__(self, hardware, write, save_path=None, room_table=None):
+        self.hardware = hardware
+        self.write = write
+        self.lines = []
+
+    def start(self, now_ms):
+        self.write("FAKE GAME STARTED")
+
+    def handle_line(self, line, now_ms):
+        self.lines.append(line)
+        if line.strip().lower() == "quit":
+            self.write("FAKE GAME QUIT")
+            return False
+        self.write("FAKE GAME GOT:", line)
+        return True
+
+
 def make_menu():
     stream = FakeStream()
     badge = FakeBadge()
@@ -92,7 +111,9 @@ class SerialMenuTests(unittest.TestCase):
         serial_menu.usb_keyboard.ready = lambda: True
         self.saved_configs = []
         self.original_save = serial_menu.user_config.save
-        serial_menu.user_config.save = lambda theme, brightness: self.saved_configs.append((theme, brightness))
+        serial_menu.user_config.save = lambda theme, brightness, party_bpm: self.saved_configs.append(
+            (theme, brightness, party_bpm)
+        )
 
     def tearDown(self):
         serial_menu.usb_keyboard.ready = self.original_ready
@@ -154,7 +175,7 @@ class SerialMenuTests(unittest.TestCase):
         menu, stream, _, _ = make_menu()
         stream.feed("help\n")
         menu.update(1000)
-        for name in ("help", "status", "theme", "brightness", "accel", "reset", "bootloader"):
+        for name in ("help", "status", "theme", "brightness", "bpm", "accel", "reset", "bootloader"):
             self.assertIn(name, stream.output())
 
     def test_status_reports_theme_brightness_and_sensors(self):
@@ -227,7 +248,7 @@ class SerialMenuTests(unittest.TestCase):
         badge.theme = 3
         stream.feed("brightness 60\n")
         menu.update(1000)
-        self.assertEqual([(3, 0.6)], self.saved_configs)
+        self.assertEqual([(3, 0.6, badge.party_bpm)], self.saved_configs)
 
     def test_brightness_get_does_not_save_user_config(self):
         menu, stream, _, _ = make_menu()
@@ -240,6 +261,44 @@ class SerialMenuTests(unittest.TestCase):
         stream.feed("brightness abc\n")
         menu.update(1000)
         self.assertEqual([], hardware.set_brightness_calls)
+        self.assertIn("usage:", stream.output())
+
+    def test_bpm_get_reports_current_value(self):
+        menu, stream, badge, _ = make_menu()
+        badge.party_bpm = 140.0
+        stream.feed("bpm\n")
+        menu.update(1000)
+        self.assertIn("140", stream.output())
+
+    def test_bpm_set_clamps_high_and_low(self):
+        menu, stream, badge, _ = make_menu()
+        stream.feed("bpm 5000\n")
+        menu.update(1000)
+        self.assertEqual(999.0, badge.party_bpm)
+
+        stream.feed("bpm -20\n")
+        menu.update(1000)
+        self.assertEqual(1.0, badge.party_bpm)
+
+    def test_bpm_set_saves_user_config(self):
+        menu, stream, badge, hardware = make_menu()
+        badge.theme = 3
+        stream.feed("bpm 140\n")
+        menu.update(1000)
+        self.assertEqual([(3, hardware.brightness, 140.0)], self.saved_configs)
+
+    def test_bpm_get_does_not_save_user_config(self):
+        menu, stream, _, _ = make_menu()
+        stream.feed("bpm\n")
+        menu.update(1000)
+        self.assertEqual([], self.saved_configs)
+
+    def test_bpm_rejects_non_numeric_argument(self):
+        menu, stream, badge, _ = make_menu()
+        original = badge.party_bpm
+        stream.feed("bpm abc\n")
+        menu.update(1000)
+        self.assertEqual(original, badge.party_bpm)
         self.assertIn("usage:", stream.output())
 
     def test_accel_reports_reading_when_present(self):
@@ -312,6 +371,50 @@ class SerialMenuTests(unittest.TestCase):
         self.assertTrue(stream._pending)
         menu.update(1000)
         self.assertFalse(stream._pending)
+
+
+class SerialMenuGameModeTests(unittest.TestCase):
+    def setUp(self):
+        self.original_game = serial_menu.Game
+        serial_menu.Game = FakeGame
+
+    def tearDown(self):
+        serial_menu.Game = self.original_game
+
+    def test_help_output_mentions_play(self):
+        menu, stream, _, _ = make_menu()
+        stream.feed("help\n")
+        menu.update(1000)
+        self.assertIn("play", stream.output())
+
+    def test_play_starts_a_game_session_and_routes_subsequent_lines_to_it(self):
+        menu, stream, _, _ = make_menu()
+        stream.feed("play\n")
+        menu.update(1000)
+        self.assertTrue(menu.game_active)
+        self.assertIn("FAKE GAME STARTED", stream.output())
+
+        stream.feed("look\n")
+        menu.update(1000)
+        self.assertIn("FAKE GAME GOT: look", stream.output())
+
+    def test_quit_inside_game_returns_control_to_normal_commands(self):
+        menu, stream, badge, _ = make_menu()
+        stream.feed("play\nquit\n")
+        menu.update(1000)
+        self.assertFalse(menu.game_active)
+        self.assertIn("FAKE GAME QUIT", stream.output())
+
+        stream.feed("theme 3\n")
+        menu.update(1000)
+        self.assertEqual([(2, 1000, 2)], badge.select_calls)
+
+    def test_game_active_property_reflects_session_state(self):
+        menu, stream, _, _ = make_menu()
+        self.assertFalse(menu.game_active)
+        stream.feed("play\n")
+        menu.update(1000)
+        self.assertTrue(menu.game_active)
 
 
 if __name__ == "__main__":

@@ -18,6 +18,9 @@ if saved_config:
     theme = saved_config.get("theme")
     if isinstance(theme, int) and 0 <= theme < len(THEME_NAMES):
         badge.theme = theme
+    party_bpm = saved_config.get("party_bpm")
+    if isinstance(party_bpm, (int, float)) and party_bpm > 0:
+        badge.party_bpm = party_bpm
 
 print("MK9 MicroPython firmware")
 print("accelerometer:", "ready" if hardware.accelerometer else "not detected")

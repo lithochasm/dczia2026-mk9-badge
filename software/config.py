@@ -26,12 +26,24 @@ KEY_SCAN_MS = 3
 DEBOUNCE_SCANS = 3
 LONG_PRESS_MS = 750
 STARTUP_MS = 3200
+PARTY_BPM = 175.0
+PARTY_BPM_MIN = 1.0
+PARTY_BPM_MAX = 999.0
+PARTY_BPM_STEP = 2.0
+
+# While Party Mode is active, these two keys (0-based indices; Key 7/Key 8 in
+# the physical 1-9 numbering -- the ones that normally type "1" and "2") stop
+# sending USB numpad taps and instead nudge the tempo down/up by
+# PARTY_BPM_STEP per short press. A long press on either still selects that
+# key's own theme as usual.
+PARTY_BPM_DOWN_KEY = 6
+PARTY_BPM_UP_KEY = 7
 
 # key number -> USB keypad key code (7 8 9 / 4 5 6 / 1 2 3)
 NUMPAD_CODES = (95, 96, 97, 92, 93, 94, 89, 90, 91)
 
 THEME_NAMES = (
-    "Prism",
+    "Party Mode",
     "Vaporwave",
     "Deep Ocean",
     "Ember",
@@ -40,7 +52,15 @@ THEME_NAMES = (
     "Sunset",
     "Glacier",
     "Moonlight",
+    "Prism",
 )
+
+PARTY_MODE_THEME = THEME_NAMES.index("Party Mode")
+
+# Boot-time default theme (before any saved user_config.json is applied).
+# Named explicitly rather than hardcoded as 0, since Party Mode -- not a calm
+# ambient theme -- now lives at index 0.
+DEFAULT_THEME = THEME_NAMES.index("Prism")
 
 # (row, column), including the six perimeter LEDs.
 LED_POSITIONS = (

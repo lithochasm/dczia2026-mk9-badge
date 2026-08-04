@@ -21,9 +21,9 @@ class UserConfigTests(unittest.TestCase):
         shutil.rmtree(self.tmp_dir)
 
     def test_save_then_load_round_trips_values(self):
-        user_config.save(4, 0.55, path=self.path)
+        user_config.save(4, 0.55, 140.0, path=self.path)
         data = user_config.load(path=self.path)
-        self.assertEqual({"theme": 4, "brightness": 0.55}, data)
+        self.assertEqual({"theme": 4, "brightness": 0.55, "party_bpm": 140.0}, data)
 
     def test_load_with_no_file_returns_none(self):
         self.assertIsNone(user_config.load(path=self.path))
@@ -35,12 +35,14 @@ class UserConfigTests(unittest.TestCase):
 
     def test_save_to_unwritable_path_does_not_raise(self):
         bad_path = os.path.join(self.tmp_dir, "missing_dir", "user_config.json")
-        user_config.save(0, 0.3, path=bad_path)  # must not raise
+        user_config.save(0, 0.3, 175.0, path=bad_path)  # must not raise
 
     def test_save_overwrites_previous_value(self):
-        user_config.save(1, 0.2, path=self.path)
-        user_config.save(7, 0.9, path=self.path)
-        self.assertEqual({"theme": 7, "brightness": 0.9}, user_config.load(path=self.path))
+        user_config.save(1, 0.2, 120.0, path=self.path)
+        user_config.save(7, 0.9, 200.0, path=self.path)
+        self.assertEqual(
+            {"theme": 7, "brightness": 0.9, "party_bpm": 200.0}, user_config.load(path=self.path)
+        )
 
 
 if __name__ == "__main__":

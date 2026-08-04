@@ -6,12 +6,20 @@ import time
 
 from color_tools import add, blend, multiply, smoothstep
 from config import (
+    DEFAULT_THEME,
     FRAME_MS,
     LED_POSITIONS,
     LONG_PRESS_MS,
     NUM_KEY_LEDS,
     NUM_PIXELS,
     NUMPAD_CODES,
+    PARTY_BPM,
+    PARTY_BPM_DOWN_KEY,
+    PARTY_BPM_MAX,
+    PARTY_BPM_MIN,
+    PARTY_BPM_STEP,
+    PARTY_BPM_UP_KEY,
+    PARTY_MODE_THEME,
     STARTUP_MS,
     THEME_NAMES,
 )
@@ -61,7 +69,8 @@ class Badge:
         self.hardware = hardware
         self.serial_menu = SerialMenu(self, hardware, serial_stream)
         self.frame = hardware.frame
-        self.theme = 0
+        self.theme = DEFAULT_THEME
+        self.party_bpm = PARTY_BPM
         self.start_ms = time.ticks_ms()
         self.last_frame_ms = time.ticks_add(self.start_ms, -FRAME_MS)
         self.animation_seconds = 0.0
@@ -100,17 +109,39 @@ class Badge:
 
     def _release(self, key):
         self.held[key] = False
-        if not self.long_fired[key]:
-            usb_keyboard.tap(NUMPAD_CODES[key])
+        if self.long_fired[key]:
+            return
+        # Party Mode is a flashy visual effect, not a typing surface -- don't
+        # let casual key presses leak numpad keystrokes into whatever has
+        # focus on the host while it's active. Instead, two of its otherwise-
+        # idle keys become a tempo control.
+        if self.theme == PARTY_MODE_THEME:
+            if key == PARTY_BPM_DOWN_KEY:
+                self._adjust_party_bpm(-PARTY_BPM_STEP)
+            elif key == PARTY_BPM_UP_KEY:
+                self._adjust_party_bpm(PARTY_BPM_STEP)
+            return
+        usb_keyboard.tap(NUMPAD_CODES[key])
+
+    def _adjust_party_bpm(self, delta):
+        self.party_bpm = max(PARTY_BPM_MIN, min(PARTY_BPM_MAX, self.party_bpm + delta))
+        user_config.save(self.theme, self.hardware.brightness, self.party_bpm)
 
     def _select_theme(self, theme, now_ms, origin):
         self.theme = theme % len(THEME_NAMES)
         self.flash_start_ms = now_ms
         self.flash_origin = origin
-        user_config.save(self.theme, self.hardware.brightness)
+        user_config.save(self.theme, self.hardware.brightness, self.party_bpm)
 
     def _handle_keys(self, now_ms):
-        for event in self.hardware.keys.update(now_ms):
+        events = self.hardware.keys.update(now_ms)
+        if self.serial_menu.game_active:
+            # A game session owns the key LEDs and typed input; physical
+            # keys become inert status lights (no HID taps, no theme
+            # changes) until the player quits. Still drain the matrix
+            # above so debounce state doesn't backlog while a game runs.
+            return
+        for event in events:
             if event.pressed:
                 self._press(event.key, now_ms)
             else:
@@ -295,27 +326,30 @@ class Badge:
         delta_ms = min(delta_ms, 100)
         self.animation_seconds += delta_ms / 1000.0
 
-        self._update_motion(now_ms)
-        self._update_sparkles(delta_ms)
-        startup_elapsed = time.ticks_diff(now_ms, self.start_ms)
-        if startup_elapsed < STARTUP_MS:
-            render_startup(
-                self.frame,
-                startup_elapsed,
-                self.theme,
-                0.0,
-                0.0,
-                self.sparkle,
-            )
-        else:
-            render_theme(
-                self.frame,
-                self.theme,
-                self.animation_seconds,
-                0.0,
-                0.0,
-                self.sparkle,
-            )
+        if not self.serial_menu.game_active:
+            self._update_motion(now_ms)
+            self._update_sparkles(delta_ms)
+            startup_elapsed = time.ticks_diff(now_ms, self.start_ms)
+            if startup_elapsed < STARTUP_MS:
+                render_startup(
+                    self.frame,
+                    startup_elapsed,
+                    self.theme,
+                    0.0,
+                    0.0,
+                    self.sparkle,
+                    self.party_bpm,
+                )
+            else:
+                render_theme(
+                    self.frame,
+                    self.theme,
+                    self.animation_seconds,
+                    0.0,
+                    0.0,
+                    self.sparkle,
+                    self.party_bpm,
+                )
 
         # Theme rendering is the longest CPU-bound stage. Service input again
         # before overlays and the LED write so a frame cannot monopolize the
@@ -325,10 +359,11 @@ class Badge:
         usb_keyboard.update(now_ms)
         self.serial_menu.update(now_ms)
 
-        self._apply_light_pool()
-        self._apply_ripples(now_ms)
-        self._apply_held(now_ms)
-        self._apply_theme_flash(now_ms)
+        if not self.serial_menu.game_active:
+            self._apply_light_pool()
+            self._apply_ripples(now_ms)
+            self._apply_held(now_ms)
+            self._apply_theme_flash(now_ms)
         self.hardware.show(self.frame)
 
     def run(self):

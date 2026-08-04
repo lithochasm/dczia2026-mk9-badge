@@ -9,7 +9,8 @@ needs no special handling here.
 
 import time
 
-from config import THEME_NAMES
+from config import PARTY_BPM_MAX, PARTY_BPM_MIN, THEME_NAMES
+from game import Game
 import usb_keyboard
 import user_config
 
@@ -24,9 +25,11 @@ _HELP_TEXT = (
     "  status               theme, brightness, sensors, USB-HID, uptime\r\n"
     "  theme [n|name]       show themes, or set by number (1-9) or name\r\n"
     "  brightness [0-100]   show or set LED brightness percent\r\n"
+    "  bpm [1-999]          show or set Party Mode's beats-per-minute\r\n"
     "  accel                one-shot accelerometer reading\r\n"
     "  reset                reboot the badge\r\n"
     "  bootloader           enter BOOTSEL/UF2 mode for reflashing\r\n"
+    "  play                 start the text-adventure game\r\n"
 )
 
 
@@ -81,6 +84,7 @@ def _cmd_status(menu, args, now_ms):
     hardware = menu.hardware
     menu._write_line("theme:", badge.theme + 1, badge.theme_name)
     menu._write_line("brightness:", int(hardware.brightness * 100 + 0.5), "%")
+    menu._write_line("party bpm:", badge.party_bpm)
     if hardware.accelerometer is not None:
         menu._write_line("accelerometer: ready")
     elif hardware.accelerometer_error is not None:
@@ -119,8 +123,23 @@ def _cmd_brightness(menu, args, now_ms):
         return
     percent = max(0.0, min(100.0, percent))
     menu.hardware.set_brightness(percent / 100.0)
-    user_config.save(menu.badge.theme, menu.hardware.brightness)
+    user_config.save(menu.badge.theme, menu.hardware.brightness, menu.badge.party_bpm)
     menu._write_line("brightness ->", int(percent + 0.5), "%")
+
+
+def _cmd_bpm(menu, args, now_ms):
+    if not args:
+        menu._write_line("party bpm:", menu.badge.party_bpm)
+        return
+    try:
+        value = float(args[0])
+    except ValueError:
+        menu._write_line("usage: bpm <1-999>")
+        return
+    value = max(PARTY_BPM_MIN, min(PARTY_BPM_MAX, value))
+    menu.badge.party_bpm = value
+    user_config.save(menu.badge.theme, menu.hardware.brightness, menu.badge.party_bpm)
+    menu._write_line("party bpm ->", value)
 
 
 def _cmd_accel(menu, args, now_ms):
@@ -158,14 +177,21 @@ def _cmd_bootloader(menu, args, now_ms):
     _machine_bootloader()
 
 
+def _cmd_play(menu, args, now_ms):
+    menu._active_game = Game(menu.hardware, menu._write_line)
+    menu._active_game.start(now_ms)
+
+
 _COMMANDS = {
     "help": _cmd_help,
     "status": _cmd_status,
     "theme": _cmd_theme,
     "brightness": _cmd_brightness,
+    "bpm": _cmd_bpm,
     "accel": _cmd_accel,
     "reset": _cmd_reset,
     "bootloader": _cmd_bootloader,
+    "play": _cmd_play,
 }
 
 
@@ -179,6 +205,11 @@ class SerialMenu:
         self._line = ""
         self._greeted = False
         self._last_was_cr = False
+        self._active_game = None
+
+    @property
+    def game_active(self):
+        return self._active_game is not None
 
     def update(self, now_ms):
         stream = self._stream
@@ -220,6 +251,11 @@ class SerialMenu:
     def _dispatch(self, line, now_ms):
         line = line.strip()
         if not line:
+            return
+        if self._active_game is not None:
+            still_playing = self._active_game.handle_line(line, now_ms)
+            if not still_playing:
+                self._active_game = None
             return
         parts = line.split()
         handler = _COMMANDS.get(parts[0].lower())

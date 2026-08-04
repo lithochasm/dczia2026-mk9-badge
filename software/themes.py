@@ -1,9 +1,9 @@
-"""Nine spatial color themes plus the boot rainbow."""
+"""Ten spatial color themes plus the boot rainbow."""
 
 import math
 
 from color_tools import add, blend, palette, scale, smoothstep, wheel
-from config import BACKLIGHT_START, LED_POSITIONS, NUM_PIXELS, STARTUP_MS
+from config import BACKLIGHT_START, LED_POSITIONS, NUM_PIXELS, PARTY_BPM, STARTUP_MS
 
 _X = tuple(position[1] - 1.0 for position in LED_POSITIONS)
 _Y = tuple(position[0] - 1.0 for position in LED_POSITIONS)
@@ -18,7 +18,7 @@ _ULTRA = ((18, 0, 65), (90, 0, 210), (214, 20, 255), (20, 70, 255))
 _SUNSET = ((105, 0, 100), (245, 22, 105), (255, 102, 20), (255, 215, 55))
 _GLACIER = ((0, 20, 50), (0, 125, 205), (40, 245, 255), (225, 255, 255))
 _ACCENTS = (
-    (255, 255, 255),
+    (255, 20, 147),
     (255, 20, 190),
     (20, 240, 225),
     (255, 92, 10),
@@ -27,19 +27,42 @@ _ACCENTS = (
     (255, 165, 35),
     (185, 255, 255),
     (190, 215, 255),
+    (255, 255, 255),
 )
+
+# Party Mode: a random-looking flicker that's actually a deterministic hash
+# of (party_pulse, led), so it never touches the shared `random` module
+# (which the Moonlight sparkle timer also depends on) and replays identically
+# for the same `seconds` input -- handy for tests, harmless in production
+# since nobody can tell the difference between "random" and "well-hashed".
+# party_pulse advances once every _PARTY_BEAT_DIVISOR beats of the current
+# BPM, so the pattern only changes on every other beat instead of every beat.
+# BPM itself is a render_theme()/render_startup() parameter (default
+# config.PARTY_BPM), not a constant, so it can be changed live.
+_PARTY_BEAT_DIVISOR = 2  # pulse only every Nth beat (2 = every other beat)
+_PARTY_ON_CHANCE = 178  # ~70% of 255: mostly lit, with dark LEDs for contrast
+_PARTY_DUTY = 0.55  # fraction of each pulse the pattern is lit before blacking out
+
+
+def _party_hash(party_pulse, led):
+    value = (party_pulse * 2654435761 + led * 2246822519) & 0xFFFFFFFF
+    value ^= value >> 13
+    value = (value * 3266489917) & 0xFFFFFFFF
+    value ^= value >> 16
+    return value
 
 
 def theme_accent(theme):
     return _ACCENTS[theme % len(_ACCENTS)]
 
 
-def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None):
+def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None, party_bpm=PARTY_BPM):
     """Render one complete theme into the supplied 15-element frame."""
-    theme %= 9
+    theme %= 10
     if theme == 0:
-        time_phase = seconds * 1.8
-        hue_base = seconds * 34.0 + tilt_x * 42.0 + tilt_y * 24.0
+        party_pulse_position = seconds * party_bpm / 60.0 / _PARTY_BEAT_DIVISOR
+        party_pulse = int(party_pulse_position)
+        party_lit = (party_pulse_position - party_pulse) < _PARTY_DUTY
     elif theme == 1:
         time_phase = seconds * 1.35 + tilt_x
     elif theme == 2:
@@ -57,20 +80,29 @@ def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None):
         second_phase = seconds * 2.1
     elif theme == 7:
         time_phase = seconds * 1.55 + tilt_x * 0.7
-    else:
+    elif theme == 8:
         beam_position = math.sin(seconds * 0.8) * 2.2
         scanner_x = math.cos(seconds * 0.18)
         scanner_y = math.sin(seconds * 0.18 + tilt_y * 0.5)
+    else:
+        time_phase = seconds * 1.8
+        hue_base = seconds * 34.0 + tilt_x * 42.0 + tilt_y * 24.0
 
     for led in range(NUM_PIXELS):
         x = _X[led]
         y = _Y[led]
         edge = _EDGE[led]
 
-        if theme == 0:  # Prism: flowing diagonal rainbow
-            wave = 0.5 + 0.5 * math.sin(time_phase + x * 1.4 - y)
-            hue = hue_base + x * 32.0 + y * 45.0
-            color = wheel(hue, 0.16 + wave * 0.34 + edge)
+        if theme == 0:  # Party Mode: random colors/on-off pulsing across all 15 LEDs, every other beat
+            if not party_lit:
+                color = (0, 0, 0)
+            else:
+                value = _party_hash(party_pulse, led)
+                if (value & 0xFF) < _PARTY_ON_CHANCE:
+                    hue = (value >> 8) & 0xFF
+                    color = wheel(hue, 0.85)
+                else:
+                    color = (0, 0, 0)
 
         elif theme == 1:  # Vaporwave plasma
             field = 0.5 + 0.5 * math.sin(time_phase + x * 1.25 + y * 0.8)
@@ -108,17 +140,22 @@ def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None):
             crest = ring * ring
             color = scale(palette(_GLACIER, 0.28 + crest * 0.60), 0.15 + crest * 0.43 + edge)
 
-        else:  # Moonlight scanner and occasional stars
+        elif theme == 8:  # Moonlight scanner and occasional stars
             projection = x * scanner_x + y * scanner_y
             beam = max(0.0, 1.0 - abs(projection - beam_position) / 0.72)
             star = 0.0 if sparkle is None else sparkle[led]
             color = add(scale((35, 55, 105), 0.13 + edge), (205, 225, 255), beam * 0.55)
             color = add(color, (255, 255, 255), star * star * 0.75)
 
+        else:  # Prism: flowing diagonal rainbow
+            wave = 0.5 + 0.5 * math.sin(time_phase + x * 1.4 - y)
+            hue = hue_base + x * 32.0 + y * 45.0
+            color = wheel(hue, 0.16 + wave * 0.34 + edge)
+
         frame[led] = color
 
 
-def render_startup(frame, elapsed_ms, theme=0, tilt_x=0.0, tilt_y=0.0, sparkle=None):
+def render_startup(frame, elapsed_ms, theme=0, tilt_x=0.0, tilt_y=0.0, sparkle=None, party_bpm=PARTY_BPM):
     """Fade in a moving rainbow, then cross-fade to the active theme."""
     progress = min(1.0, max(0.0, elapsed_ms / float(STARTUP_MS)))
     rainbow = [None] * NUM_PIXELS
@@ -136,7 +173,7 @@ def render_startup(frame, elapsed_ms, theme=0, tilt_x=0.0, tilt_y=0.0, sparkle=N
             frame[led] = rainbow[led]
         return
 
-    render_theme(frame, theme, elapsed_ms / 1000.0, tilt_x, tilt_y, sparkle)
+    render_theme(frame, theme, elapsed_ms / 1000.0, tilt_x, tilt_y, sparkle, party_bpm)
     amount = smoothstep((progress - 0.72) / 0.28)
     for led in range(NUM_PIXELS):
         frame[led] = blend(rainbow[led], frame[led], amount)
