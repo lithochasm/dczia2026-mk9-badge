@@ -4,7 +4,7 @@ import math
 import random
 import time
 
-from color_tools import add, blend, multiply, smoothstep
+from color_tools import add, blend, wheel
 from config import (
     DEFAULT_THEME,
     FRAME_MS,
@@ -36,20 +36,25 @@ _FLASH_ORDER = (14, 0, 1, 2, 9, 10, 5, 8, 11, 12, 7, 6, 13, 3, 4)
 _RIPPLE_SPEED = 2.5
 _RIPPLE_WIDTH = 0.58
 _RIPPLE_MAX_RADIUS = 4.25
-_ROTATION_MIN_ACCEL = 2.0
+_ROTATION_MIN_ACCEL_SQUARED = 4.0
 _POOL_LEVEL = 1.0
-_ROTATION_FILTER = 0.85
-_POOL_SPRING = 0.38
-_POOL_DAMPING = 0.62
-_Z_FILTER = 0.30
+_MOTION_RESPONSE = 0.30
+_POOL_SPRING = 0.16
+_POOL_DAMPING = 0.78
 _POOL_Z_FULL = 7.0
 _POOL_Z_OFF = 8.6
-_POOL_STRENGTH_RESPONSE = 0.45
+_MOTION_HUE_BLEND = 0.16
+_MOTION_HUE_SPEED_BOOST = 0.08
 _PI = 3.14159265
 _TAU = 6.28318531
+_FRAME_STEP_SCALE = 1.0 / FRAME_MS
+_WAVE_CYCLE_SCALE = 1.0 / _TAU
+_WAVE_CYCLE_OFFSET = 16.0
 
 _X = tuple(position[1] - 1.0 for position in LED_POSITIONS)
 _Y = tuple(position[0] - 1.0 for position in LED_POSITIONS)
+_POOL_X_256 = tuple(int(value * (256.0 / 2.25)) for value in _X)
+_POOL_Y_256 = tuple(int(value * (256.0 / 2.25)) for value in _Y)
 
 
 def _distance_map():
@@ -179,7 +184,7 @@ class Badge:
                 self.long_fired[key] = True
                 self._select_theme(key, now_ms, key)
 
-    def _update_motion(self, now_ms):
+    def _update_motion(self, now_ms, delta_ms=FRAME_MS):
         sensor = self.hardware.accelerometer
         if sensor is None:
             return
@@ -191,6 +196,15 @@ class Badge:
         acceleration_x = acceleration[0]
         acceleration_y = acceleration[1]
         acceleration_z = acceleration[2]
+        frame_steps = delta_ms * _FRAME_STEP_SCALE
+        if frame_steps < 0.0:
+            frame_steps = 0.0
+        # The normal path avoids an expensive fractional power on every frame.
+        response = (
+            _MOTION_RESPONSE
+            if frame_steps == 1.0
+            else 1.0 - math.pow(1.0 - _MOTION_RESPONSE, frame_steps)
+        )
         if not self.motion_ready:
             self.gravity_x = acceleration_x
             self.gravity_y = acceleration_y
@@ -201,56 +215,94 @@ class Badge:
             # visibly follow rotation of a hanging badge.
             self.gravity_x += (
                 acceleration_x - self.gravity_x
-            ) * _ROTATION_FILTER
+            ) * response
             self.gravity_y += (
                 acceleration_y - self.gravity_y
-            ) * _ROTATION_FILTER
+            ) * response
             self.gravity_z += (
                 acceleration_z - self.gravity_z
-            ) * _Z_FILTER
+            ) * response
 
-        magnitude = math.sqrt(
+        planar_acceleration_squared = (
             self.gravity_x * self.gravity_x + self.gravity_y * self.gravity_y
         )
-        z_gate = smoothstep(
-            (_POOL_Z_OFF - abs(self.gravity_z))
-            / (_POOL_Z_OFF - _POOL_Z_FULL)
-        )
-        if magnitude < _ROTATION_MIN_ACCEL or z_gate < 0.01:
+        z_gate = (
+            _POOL_Z_OFF - abs(self.gravity_z)
+        ) / (_POOL_Z_OFF - _POOL_Z_FULL)
+        if z_gate <= 0.0:
+            z_gate = 0.0
+        elif z_gate >= 1.0:
+            z_gate = 1.0
+        else:
+            z_gate = z_gate * z_gate * (3.0 - 2.0 * z_gate)
+        if (
+            planar_acceleration_squared < _ROTATION_MIN_ACCEL_SQUARED
+            or z_gate < 0.01
+        ):
             # When the badge is nearly face-up, an accelerometer cannot measure
             # rotation around Z. Fade the pool instead of amplifying noise.
-            self.pool_angular_velocity *= 0.50
+            self.pool_angular_velocity *= (
+                0.50
+                if frame_steps == 1.0
+                else math.pow(0.50, frame_steps)
+            )
             self.pool_direction_ready = False
             self.pool_strength += (
                 0.0 - self.pool_strength
-            ) * _POOL_STRENGTH_RESPONSE
+            ) * response
             return
 
-        # Normalize X/Y so forward/back angle cannot change pool strength.
-        # Proper acceleration points uphill, hence the minus signs. Z only
-        # suppresses the effect near face-up; it does not steer the pool.
-        pool_target_x = -self.gravity_x / magnitude
-        pool_target_y = -self.gravity_y / magnitude
-        target_angle = math.atan2(pool_target_y, pool_target_x)
+        # atan2 only needs the direction, so no square root or normalization is
+        # required. Proper acceleration points uphill, hence the minus signs.
+        # Z only suppresses the effect near face-up; it does not steer the pool.
+        target_angle = math.atan2(-self.gravity_y, -self.gravity_x)
         if not self.pool_direction_ready:
             self.pool_angle = target_angle
             self.pool_angular_velocity = 0.0
             self.pool_direction_ready = True
         else:
-            angle_error = (
-                target_angle - self.pool_angle + _PI
-            ) % _TAU - _PI
-            self.pool_angular_velocity += angle_error * _POOL_SPRING
-            self.pool_angular_velocity *= _POOL_DAMPING
-            self.pool_angle = (
-                self.pool_angle + self.pool_angular_velocity + _PI
-            ) % _TAU - _PI
+            # Preserve the tuned 25 ms spring behavior while making longer or
+            # shorter frames advance by the corresponding amount of time.
+            if frame_steps == 1.0:
+                angle_error = (
+                    target_angle - self.pool_angle + _PI
+                ) % _TAU - _PI
+                self.pool_angular_velocity = (
+                    self.pool_angular_velocity
+                    + angle_error * _POOL_SPRING
+                ) * _POOL_DAMPING
+                self.pool_angle = (
+                    self.pool_angle
+                    + self.pool_angular_velocity
+                    + _PI
+                ) % _TAU - _PI
+            else:
+                remaining = frame_steps
+                while remaining > 0.0001:
+                    step = 1.0 if remaining >= 1.0 else remaining
+                    angle_error = (
+                        target_angle - self.pool_angle + _PI
+                    ) % _TAU - _PI
+                    self.pool_angular_velocity += (
+                        angle_error * _POOL_SPRING * step
+                    )
+                    self.pool_angular_velocity *= (
+                        _POOL_DAMPING
+                        if step == 1.0
+                        else math.pow(_POOL_DAMPING, step)
+                    )
+                    self.pool_angle = (
+                        self.pool_angle
+                        + self.pool_angular_velocity * step
+                        + _PI
+                    ) % _TAU - _PI
+                    remaining -= step
         self.pool_x = math.cos(self.pool_angle)
         self.pool_y = math.sin(self.pool_angle)
         strength_target = _POOL_LEVEL * z_gate
         self.pool_strength += (
             strength_target - self.pool_strength
-        ) * _POOL_STRENGTH_RESPONSE
+        ) * response
 
     def _update_sparkles(self, delta_ms):
         decay = delta_ms / 620.0
@@ -260,40 +312,118 @@ class Badge:
         if random.getrandbits(8) < chance:
             self.sparkle[random.getrandbits(8) % NUM_PIXELS] = 1.0
 
-    def _apply_light_pool(self):
-        magnitude = math.sqrt(self.pool_x * self.pool_x + self.pool_y * self.pool_y)
+    def _apply_motion_color(self):
+        """Sweep a smooth orientation-driven hue wash through every theme."""
         strength = self.pool_strength
-        if magnitude < 0.015 or strength < 0.015:
+        if not self.pool_direction_ready or strength < 0.015:
             return
 
-        direction_x = self.pool_x / magnitude
-        direction_y = self.pool_y / magnitude
-        slosh_speed = min(1.0, abs(self.pool_angular_velocity) * 1.8)
+        # The color wheel wraps at the same point as pool_angle, so rotating
+        # through -pi/pi stays continuous instead of jumping between colors.
+        hue = (self.pool_angle + _PI) / _TAU * 255.0
+        speed = min(1.0, abs(self.pool_angular_velocity) * 1.8)
+        amount = strength * (
+            _MOTION_HUE_BLEND + speed * _MOTION_HUE_SPEED_BOOST
+        )
+        amount_256 = int(amount * 256.0)
+        inverse_256 = 256 - amount_256
+        wash = wheel(hue, 0.72)
+        frame = self.frame
         for led in range(NUM_PIXELS):
-            projection = (_X[led] * direction_x + _Y[led] * direction_y) / 2.25
-            projection = max(-1.0, min(1.0, projection))
+            color = frame[led]
+            frame[led] = (
+                (color[0] * inverse_256 + wash[0] * amount_256) >> 8,
+                (color[1] * inverse_256 + wash[1] * amount_256) >> 8,
+                (color[2] * inverse_256 + wash[2] * amount_256) >> 8,
+            )
+
+    def _apply_light_pool(self):
+        strength = self.pool_strength
+        if strength < 0.015 or abs(self.pool_x) + abs(self.pool_y) < 0.015:
+            return
+
+        # Geometry below is 8.8 fixed point. On the RP2040, doing these small
+        # per-pixel transforms as integers is substantially faster than float
+        # division while preserving more precision than the LEDs can display.
+        direction_x_256 = int(self.pool_x * 256.0)
+        direction_y_256 = int(self.pool_y * 256.0)
+        strength_256 = int(strength * 256.0)
+        slosh_speed = min(1.0, abs(self.pool_angular_velocity) * 1.8)
+        wobble_256 = int(
+            (0.075 + slosh_speed * 0.09) * strength * 256.0
+        )
+        wave_phase = self.animation_seconds * 2.7
+        wave_cycle = wave_phase * _WAVE_CYCLE_SCALE + _WAVE_CYCLE_OFFSET
+        wave_fraction = wave_cycle - int(wave_cycle)
+        wave_256 = int((1.0 - 4.0 * abs(wave_fraction - 0.5)) * 256.0)
+        accent = theme_accent(self.theme)
+        frame = self.frame
+        x_positions = _POOL_X_256
+        y_positions = _POOL_Y_256
+        for led in range(NUM_PIXELS):
+            x = x_positions[led]
+            y = y_positions[led]
+            projection_256 = (
+                x * direction_x_256 + y * direction_y_256
+            ) >> 8
+            if projection_256 < -256:
+                projection_256 = -256
+            elif projection_256 > 256:
+                projection_256 = 256
 
             # A slightly uneven shoreline makes the lit area feel liquid
-            # instead of like a plain linear brightness gradient.
-            across = (-_X[led] * direction_y + _Y[led] * direction_x) / 2.25
-            shoreline = 0.12 + math.sin(
-                self.animation_seconds * 2.7 + across * 3.8
-            ) * (0.075 + slosh_speed * 0.09) * strength
-            wetness = smoothstep((projection - shoreline) / 0.58)
-            surface = max(0.0, 1.0 - abs(projection - shoreline) / 0.22)
+            # instead of like a plain linear brightness gradient. A triangle
+            # wave keeps the shoreline continuous, and the small bend makes
+            # it vary across the direction of travel without per-LED trig.
+            across_256 = (
+                -x * direction_y_256 + y * direction_x_256
+            ) >> 8
+            shoreline_256 = 31 + (
+                (
+                    wave_256 + ((across_256 * 46) >> 8)
+                ) * wobble_256
+                >> 8
+            )
+            difference_256 = projection_256 - shoreline_256
+            wetness_256 = (difference_256 * 441) >> 8
+            if wetness_256 <= 0:
+                wetness_256 = 0
+            elif wetness_256 >= 256:
+                wetness_256 = 256
+            else:
+                wetness_256 = (
+                    wetness_256
+                    * wetness_256
+                    * (768 - 2 * wetness_256)
+                ) >> 16
+            surface_256 = 256 - ((abs(difference_256) * 1164) >> 8)
+            if surface_256 < 0:
+                surface_256 = 0
 
             # Make the uphill area visibly "dry" while the pool and its bright
             # surface gather at the downhill edge.
-            level = (
-                1.0
-                - 0.92 * strength
-                + 1.95 * strength * wetness
-                + 0.55 * strength * surface
+            level_256 = (
+                256
+                - ((strength_256 * 236) >> 8)
+                + ((strength_256 * wetness_256 * 499) >> 16)
+                + ((strength_256 * surface_256 * 141) >> 16)
             )
-            self.frame[led] = add(
-                multiply(self.frame[led], level),
-                theme_accent(self.theme),
-                strength * (0.30 * wetness + 0.35 * surface),
+            accent_256 = (
+                strength_256
+                * (wetness_256 * 77 + surface_256 * 90)
+            ) >> 16
+            color = frame[led]
+            red = (color[0] * level_256 + accent[0] * accent_256) >> 8
+            green = (
+                color[1] * level_256 + accent[1] * accent_256
+            ) >> 8
+            blue = (
+                color[2] * level_256 + accent[2] * accent_256
+            ) >> 8
+            frame[led] = (
+                255 if red > 255 else red,
+                255 if green > 255 else green,
+                255 if blue > 255 else blue,
             )
 
     def _apply_ripples(self, now_ms):
@@ -352,16 +482,18 @@ class Badge:
         self.animation_seconds += delta_ms / 1000.0
 
         if not self.serial_menu.game_active:
-            self._update_motion(now_ms)
+            self._update_motion(now_ms, delta_ms)
             self._update_sparkles(delta_ms)
             startup_elapsed = time.ticks_diff(now_ms, self.start_ms)
+            motion_x = self.pool_x * self.pool_strength
+            motion_y = self.pool_y * self.pool_strength
             if startup_elapsed < STARTUP_MS:
                 render_startup(
                     self.frame,
                     startup_elapsed,
                     self.theme,
-                    0.0,
-                    0.0,
+                    motion_x,
+                    motion_y,
                     self.sparkle,
                     self.party_bpm,
                 )
@@ -370,8 +502,8 @@ class Badge:
                     self.frame,
                     self.theme,
                     self.animation_seconds,
-                    0.0,
-                    0.0,
+                    motion_x,
+                    motion_y,
                     self.sparkle,
                     self.party_bpm,
                 )
@@ -385,6 +517,7 @@ class Badge:
         self.serial_menu.update(now_ms)
 
         if not self.serial_menu.game_active:
+            self._apply_motion_color()
             self._apply_light_pool()
             self._apply_ripples(now_ms)
             self._apply_held(now_ms)

@@ -16,7 +16,10 @@ _OCEAN = ((0, 8, 38), (0, 54, 120), (0, 190, 185), (90, 255, 235))
 _EMBER = ((18, 0, 0), (150, 5, 0), (255, 55, 0), (255, 190, 20))
 _ULTRA = ((18, 0, 65), (90, 0, 210), (214, 20, 255), (20, 70, 255))
 _SUNSET = ((105, 0, 100), (245, 22, 105), (255, 102, 20), (255, 215, 55))
-_GLACIER = ((0, 20, 50), (0, 125, 205), (40, 245, 255), (225, 255, 255))
+_GLACIER = ((0, 16, 34), (0, 96, 130), (0, 235, 205), (190, 255, 225))
+_MOON_BASE = (42, 10, 82)
+_MOON_BEAM = (255, 190, 115)
+_MOON_STAR = (255, 245, 215)
 _ACCENTS = (
     (255, 20, 147),
     (255, 20, 190),
@@ -25,8 +28,8 @@ _ACCENTS = (
     (35, 255, 70),
     (185, 45, 255),
     (255, 165, 35),
-    (185, 255, 255),
-    (190, 215, 255),
+    (70, 255, 220),
+    (255, 215, 135),
     (255, 255, 255),
 )
 
@@ -141,8 +144,8 @@ def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None, pa
             projection = x * scanner_x + y * scanner_y
             beam = max(0.0, 1.0 - abs(projection - beam_position) / 0.72)
             star = 0.0 if sparkle is None else sparkle[led]
-            color = add(scale((35, 55, 105), 0.13 + edge), (205, 225, 255), beam * 0.55)
-            color = add(color, (255, 255, 255), star * star * 0.75)
+            color = add(scale(_MOON_BASE, 0.13 + edge), _MOON_BEAM, beam * 0.58)
+            color = add(color, _MOON_STAR, star * star * 0.75)
 
         else:  # Prism: flowing diagonal rainbow
             wave = 0.5 + 0.5 * math.sin(time_phase + x * 1.4 - y)

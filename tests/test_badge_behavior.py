@@ -282,6 +282,51 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.assertGreater(self.badge.pool_y, 0.0)
         self.assertLess(self.badge.pool_y, 1.0)
 
+    def test_xy_acceleration_is_filtered_instead_of_jumping_to_raw_sample(self):
+        sensor = FakeSensor()
+        self.hardware.accelerometer = sensor
+        sensor.value = (0.0, 9.80665, 0.0)
+        self.badge._update_motion(2000)
+
+        sensor.value = (9.80665, 0.0, 0.0)
+        self.badge._update_motion(2025)
+
+        self.assertGreater(self.badge.gravity_x, 0.0)
+        self.assertLess(self.badge.gravity_x, sensor.value[0] * 0.5)
+        self.assertGreater(self.badge.gravity_y, sensor.value[1])
+
+    def test_motion_response_tracks_elapsed_time_not_frame_count(self):
+        fast_hardware = FakeHardware()
+        slow_hardware = FakeHardware()
+        fast_sensor = FakeSensor()
+        slow_sensor = FakeSensor()
+        fast_hardware.accelerometer = fast_sensor
+        slow_hardware.accelerometer = slow_sensor
+        fast = badge.Badge(fast_hardware)
+        slow = badge.Badge(slow_hardware)
+
+        for candidate in (fast, slow):
+            candidate.motion_ready = True
+            candidate.gravity_x = 0.0
+            candidate.gravity_y = -9.80665
+            candidate.gravity_z = 0.0
+            candidate.pool_x = 1.0
+            candidate.pool_y = 0.0
+            candidate.pool_angle = 0.0
+            candidate.pool_direction_ready = True
+
+        fast_sensor.value = slow_sensor.value = (0.0, -9.80665, 0.0)
+        fast._update_motion(2025, 25)
+        fast._update_motion(2050, 25)
+        slow._update_motion(2050, 50)
+
+        self.assertAlmostEqual(fast.pool_angle, slow.pool_angle)
+        self.assertAlmostEqual(
+            fast.pool_angular_velocity,
+            slow.pool_angular_velocity,
+        )
+        self.assertAlmostEqual(fast.pool_strength, slow.pool_strength)
+
     def test_pool_overshoots_then_settles_like_liquid(self):
         sensor = FakeSensor()
         self.hardware.accelerometer = sensor
@@ -290,11 +335,18 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.badge.pool_direction_ready = True
         sensor.value = (0.0, -9.80665, 0.0)
 
-        for frame in range(4):
+        for frame in range(6):
             self.badge._update_motion(2000 + frame * 25)
 
         self.assertLess(self.badge.pool_x, 0.0)
         self.assertNotEqual(0.0, self.badge.pool_angular_velocity)
+
+        for frame in range(6, 40):
+            self.badge._update_motion(2000 + frame * 25)
+
+        self.assertAlmostEqual(0.0, self.badge.pool_x, delta=0.02)
+        self.assertGreater(self.badge.pool_y, 0.98)
+        self.assertAlmostEqual(0.0, self.badge.pool_angular_velocity, delta=0.01)
 
     def test_pool_direction_ignores_xy_magnitude_while_upright(self):
         sensor = FakeSensor()
@@ -347,6 +399,38 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.assertGreater(sum(self.badge.frame[10]), sum(self.badge.frame[13]))
         self.assertGreater(sum(self.badge.frame[10]), 300)
         self.assertLess(sum(self.badge.frame[13]), 300)
+
+    def test_motion_color_changes_smoothly_with_orientation(self):
+        original = [(60, 60, 60)] * 15
+        self.badge.pool_direction_ready = True
+        self.badge.pool_strength = 1.0
+        self.badge.pool_angle = 0.0
+        self.badge.frame[:] = original
+        self.badge._apply_motion_color()
+        first = tuple(self.badge.frame)
+
+        self.badge.pool_angle = 0.1
+        self.badge.frame[:] = original
+        self.badge._apply_motion_color()
+        nearby = tuple(self.badge.frame)
+
+        self.badge.pool_angle = 1.6
+        self.badge.frame[:] = original
+        self.badge._apply_motion_color()
+        distant = tuple(self.badge.frame)
+
+        nearby_delta = sum(
+            abs(a - b)
+            for first_color, nearby_color in zip(first, nearby)
+            for a, b in zip(first_color, nearby_color)
+        )
+        distant_delta = sum(
+            abs(a - b)
+            for first_color, distant_color in zip(first, distant)
+            for a, b in zip(first_color, distant_color)
+        )
+        self.assertGreater(nearby_delta, 0)
+        self.assertLess(nearby_delta, distant_delta)
 
     def test_long_press_theme_change_saves_user_config(self):
         self.badge._press(4, 1000)
