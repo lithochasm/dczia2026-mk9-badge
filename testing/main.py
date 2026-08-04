@@ -25,7 +25,6 @@ try:
 
         for event in hardware.keys.update(now):
             held[event.key] = event.pressed
-            print("key", event.key + 1, "down" if event.pressed else "up")
 
         # Moving RGB bands prove every color channel and every LED.
         for led in range(15):
