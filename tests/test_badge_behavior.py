@@ -166,6 +166,73 @@ class BadgeBehaviorTests(unittest.TestCase):
         self.assertEqual(before, self.badge.party_bpm)
         self.assertEqual([], self.taps)
 
+    def test_tap_tempo_first_tap_does_not_change_bpm(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        before = self.badge.party_bpm
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1000)
+        self.assertEqual(before, self.badge.party_bpm)
+
+    def test_tap_tempo_two_taps_sets_bpm_from_interval(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1000)
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1500)
+        self.assertEqual(120.0, self.badge.party_bpm)
+
+    def test_tap_tempo_averages_multiple_taps(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        # Intervals of 500, 600, 400 ms -> average 500 ms -> 120 BPM.
+        for now_ms in (0, 500, 1100, 1500):
+            self.badge._press(badge.PARTY_TAP_TEMPO_KEY, now_ms)
+        self.assertEqual(120.0, self.badge.party_bpm)
+
+    def test_tap_tempo_resets_after_timeout_gap(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 0)
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 500)
+        self.assertEqual(120.0, self.badge.party_bpm)
+
+        # Gap far longer than the timeout: treated as the start of a fresh
+        # sequence, so this lone tap must not change the BPM yet.
+        gap_ms = 500 + badge.PARTY_TAP_TIMEOUT_MS + 1000
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, gap_ms)
+        self.assertEqual(120.0, self.badge.party_bpm)
+        self.assertEqual([gap_ms], self.badge.tap_times)
+
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, gap_ms + 300)
+        self.assertEqual(200.0, self.badge.party_bpm)
+
+    def test_tap_tempo_ignored_outside_party_mode(self):
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1000)
+        self.badge._release(badge.PARTY_TAP_TEMPO_KEY)
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1500)
+        self.badge._release(badge.PARTY_TAP_TEMPO_KEY)
+        self.assertEqual([], self.badge.tap_times)
+        self.assertEqual(badge.PARTY_BPM, self.badge.party_bpm)
+        self.assertEqual([91, 91], self.taps)
+
+    def test_tap_tempo_clamps_to_upper_bound(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1000)
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1001)  # absurdly fast taps
+        self.assertEqual(badge.PARTY_BPM_MAX, self.badge.party_bpm)
+
+    def test_tap_tempo_saves_user_config(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1000)
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1500)
+        self.assertEqual(
+            [(badge.PARTY_MODE_THEME, self.hardware.brightness, 120.0)],
+            self.saved_configs,
+        )
+
+    def test_tap_tempo_key_still_supports_long_press_theme_select(self):
+        self.badge.theme = badge.PARTY_MODE_THEME
+        self.badge._press(badge.PARTY_TAP_TEMPO_KEY, 1000)
+        self.badge._handle_keys(1750)
+        self.badge._release(badge.PARTY_TAP_TEMPO_KEY)
+        self.assertEqual(badge.PARTY_TAP_TEMPO_KEY, self.badge.theme)
+        self.assertEqual([], self.taps)
+
     def test_full_frame_services_keys_before_and_after_render(self):
         self.badge.update()
         self.assertEqual(2, self.hardware.keys.update_calls)

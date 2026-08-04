@@ -31,21 +31,18 @@ _ACCENTS = (
 )
 
 # Party Mode: a random-looking flicker that's actually a deterministic hash
-# of (party_pulse, led), so it never touches the shared `random` module
-# (which the Moonlight sparkle timer also depends on) and replays identically
-# for the same `seconds` input -- handy for tests, harmless in production
-# since nobody can tell the difference between "random" and "well-hashed".
-# party_pulse advances once every _PARTY_BEAT_DIVISOR beats of the current
-# BPM, so the pattern only changes on every other beat instead of every beat.
-# BPM itself is a render_theme()/render_startup() parameter (default
+# of (beat, led), so it never touches the shared `random` module (which the
+# Moonlight sparkle timer also depends on) and replays identically for the
+# same `seconds` input -- handy for tests, harmless in production since
+# nobody can tell the difference between "random" and "well-hashed". BPM
+# itself is a render_theme()/render_startup() parameter (default
 # config.PARTY_BPM), not a constant, so it can be changed live.
-_PARTY_BEAT_DIVISOR = 2  # pulse only every Nth beat (2 = every other beat)
 _PARTY_ON_CHANCE = 178  # ~70% of 255: mostly lit, with dark LEDs for contrast
-_PARTY_DUTY = 0.55  # fraction of each pulse the pattern is lit before blacking out
+_PARTY_DUTY = 0.55  # fraction of each beat the pattern is lit before blacking out
 
 
-def _party_hash(party_pulse, led):
-    value = (party_pulse * 2654435761 + led * 2246822519) & 0xFFFFFFFF
+def _party_hash(beat, led):
+    value = (beat * 2654435761 + led * 2246822519) & 0xFFFFFFFF
     value ^= value >> 13
     value = (value * 3266489917) & 0xFFFFFFFF
     value ^= value >> 16
@@ -60,9 +57,9 @@ def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None, pa
     """Render one complete theme into the supplied 15-element frame."""
     theme %= 10
     if theme == 0:
-        party_pulse_position = seconds * party_bpm / 60.0 / _PARTY_BEAT_DIVISOR
-        party_pulse = int(party_pulse_position)
-        party_lit = (party_pulse_position - party_pulse) < _PARTY_DUTY
+        beat_position = seconds * party_bpm / 60.0
+        beat = int(beat_position)
+        party_lit = (beat_position - beat) < _PARTY_DUTY
     elif theme == 1:
         time_phase = seconds * 1.35 + tilt_x
     elif theme == 2:
@@ -93,11 +90,11 @@ def render_theme(frame, theme, seconds, tilt_x=0.0, tilt_y=0.0, sparkle=None, pa
         y = _Y[led]
         edge = _EDGE[led]
 
-        if theme == 0:  # Party Mode: random colors/on-off pulsing across all 15 LEDs, every other beat
+        if theme == 0:  # Party Mode: random colors/on-off pulsing across all 15 LEDs, every beat
             if not party_lit:
                 color = (0, 0, 0)
             else:
-                value = _party_hash(party_pulse, led)
+                value = _party_hash(beat, led)
                 if (value & 0xFF) < _PARTY_ON_CHANCE:
                     hue = (value >> 8) & 0xFF
                     color = wheel(hue, 0.85)

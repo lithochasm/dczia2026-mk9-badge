@@ -30,15 +30,18 @@ does not send a number:
 | 9 | Moonlight |
 
 **Party Mode** (key 1) is a random-looking flicker across all 15 LEDs,
-pulsing at 175 BPM by default but only hitting on every other beat: each
-pulse snaps to a new random pattern, holds it for the first 55% of the
-pulse, then blacks out for the rest before the next pulse's pattern snaps
-in. The tempo is adjustable live with the `bpm` command (see below), or
+pulsing at 175 BPM by default: each beat snaps to a new random pattern,
+holds it for the first 55% of the beat, then blacks out for the rest before
+the next beat's pattern snaps in. The tempo is adjustable live with the
+`bpm` command (see below), or
 directly from the badge: while Party Mode is active, key 7 nudges it down
-and key 8 nudges it up, 2 BPM per short press. While Party Mode is active,
-physical key presses otherwise stop sending USB numpad keystrokes
-(long-press theme selection still works on every key, including 7 and 8, so
-you can always long-press back out into a different theme).
+and key 8 nudges it up, 2 BPM per short press, and key 9 is a tap-tempo
+input — tap it in time with music and the average interval between taps
+becomes the new BPM (a gap longer than 2 seconds since the last tap starts a
+fresh tapping sequence instead of averaging with stale ones). While Party
+Mode is active, physical key presses otherwise stop sending USB numpad
+keystrokes (long-press theme selection still works on every key, including
+7, 8, and 9, so you can always long-press back out into a different theme).
 
 There's also a 10th theme, **Prism** — the original default rainbow — which
 isn't bound to a key (there are only 9 for 10 themes), so reach it from the

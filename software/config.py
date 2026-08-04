@@ -39,6 +39,15 @@ PARTY_BPM_STEP = 2.0
 PARTY_BPM_DOWN_KEY = 6
 PARTY_BPM_UP_KEY = 7
 
+# Key 9 (0-based index 8, normally types "3") is a tap-tempo input while
+# Party Mode is active: tap it in time with music and the average interval
+# between taps becomes the new BPM. A gap longer than PARTY_TAP_TIMEOUT_MS
+# since the last tap starts a fresh sequence instead of averaging with stale
+# taps; PARTY_TAP_HISTORY caps how many recent taps are averaged together.
+PARTY_TAP_TEMPO_KEY = 8
+PARTY_TAP_TIMEOUT_MS = 2000
+PARTY_TAP_HISTORY = 5
+
 # key number -> USB keypad key code (7 8 9 / 4 5 6 / 1 2 3)
 NUMPAD_CODES = (95, 96, 97, 92, 93, 94, 89, 90, 91)
 

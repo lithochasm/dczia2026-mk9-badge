@@ -20,6 +20,9 @@ from config import (
     PARTY_BPM_STEP,
     PARTY_BPM_UP_KEY,
     PARTY_MODE_THEME,
+    PARTY_TAP_HISTORY,
+    PARTY_TAP_TEMPO_KEY,
+    PARTY_TAP_TIMEOUT_MS,
     STARTUP_MS,
     THEME_NAMES,
 )
@@ -71,6 +74,7 @@ class Badge:
         self.frame = hardware.frame
         self.theme = DEFAULT_THEME
         self.party_bpm = PARTY_BPM
+        self.tap_times = []
         self.start_ms = time.ticks_ms()
         self.last_frame_ms = time.ticks_add(self.start_ms, -FRAME_MS)
         self.animation_seconds = 0.0
@@ -106,6 +110,8 @@ class Badge:
         if len(self.ripples) >= 6:
             del self.ripples[0]
         self.ripples.append((key, now_ms, theme_accent(key)))
+        if self.theme == PARTY_MODE_THEME and key == PARTY_TAP_TEMPO_KEY:
+            self._tap_tempo(now_ms)
 
     def _release(self, key):
         self.held[key] = False
@@ -125,6 +131,25 @@ class Badge:
 
     def _adjust_party_bpm(self, delta):
         self.party_bpm = max(PARTY_BPM_MIN, min(PARTY_BPM_MAX, self.party_bpm + delta))
+        user_config.save(self.theme, self.hardware.brightness, self.party_bpm)
+
+    def _tap_tempo(self, now_ms):
+        if self.tap_times and time.ticks_diff(now_ms, self.tap_times[-1]) > PARTY_TAP_TIMEOUT_MS:
+            self.tap_times = []
+        self.tap_times.append(now_ms)
+        if len(self.tap_times) > PARTY_TAP_HISTORY:
+            del self.tap_times[0]
+        if len(self.tap_times) < 2:
+            return
+        intervals = [
+            time.ticks_diff(self.tap_times[i], self.tap_times[i - 1])
+            for i in range(1, len(self.tap_times))
+        ]
+        average_interval = sum(intervals) / len(intervals)
+        if average_interval <= 0:
+            return
+        bpm = round(60000.0 / average_interval, 1)
+        self.party_bpm = max(PARTY_BPM_MIN, min(PARTY_BPM_MAX, bpm))
         user_config.save(self.theme, self.hardware.brightness, self.party_bpm)
 
     def _select_theme(self, theme, now_ms, origin):

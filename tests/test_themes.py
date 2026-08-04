@@ -55,55 +55,52 @@ class ThemeTests(unittest.TestCase):
         render_theme(second, PARTY_MODE_THEME, 12.5)
         self.assertEqual(first, second)
 
-    def test_party_mode_uses_all_pixels_over_a_few_pulses(self):
-        # A pulse fires every other 175 BPM beat, so the pulse period is
-        # double the raw beat period.
+    def test_party_mode_uses_all_pixels_over_a_few_beats(self):
         seen_lit = set()
-        pulse_seconds = 60.0 / 175.0 * 2
-        for pulse in range(12):
+        beat_seconds = 60.0 / 175.0
+        for beat in range(12):
             frame = [(0, 0, 0)] * NUM_PIXELS
-            render_theme(frame, PARTY_MODE_THEME, pulse * pulse_seconds)
+            render_theme(frame, PARTY_MODE_THEME, beat * beat_seconds)
             assert_valid_frame(self, frame)
             for led, color in enumerate(frame):
                 if color != (0, 0, 0):
                     seen_lit.add(led)
         self.assertEqual(NUM_PIXELS, len(seen_lit))
 
-    def test_party_mode_pattern_holds_within_the_lit_part_of_a_pulse(self):
-        # Offset well clear of the pulse/duty boundaries (rather than exact
-        # multiples of the pulse period) so float rounding can't flip which
-        # integer pulse -- or which side of the duty cycle -- a timestamp
+    def test_party_mode_pattern_holds_within_the_lit_part_of_a_beat(self):
+        # Offset well clear of the beat/duty boundaries (rather than exact
+        # multiples of the beat period) so float rounding can't flip which
+        # integer beat -- or which side of the duty cycle -- a timestamp
         # lands on. Duty cycle is 0.55, so 0.1 and 0.3 are both "lit".
-        pulse_seconds = 60.0 / 175.0 * 2
-        base = 3 * pulse_seconds
+        beat_seconds = 60.0 / 175.0
+        base = 3 * beat_seconds
         start = [(0, 0, 0)] * NUM_PIXELS
         still_lit = [(0, 0, 0)] * NUM_PIXELS
-        next_pulse = [(0, 0, 0)] * NUM_PIXELS
-        render_theme(start, PARTY_MODE_THEME, base + pulse_seconds * 0.1)
-        render_theme(still_lit, PARTY_MODE_THEME, base + pulse_seconds * 0.3)
-        render_theme(next_pulse, PARTY_MODE_THEME, base + pulse_seconds * 1.1)
+        next_beat = [(0, 0, 0)] * NUM_PIXELS
+        render_theme(start, PARTY_MODE_THEME, base + beat_seconds * 0.1)
+        render_theme(still_lit, PARTY_MODE_THEME, base + beat_seconds * 0.3)
+        render_theme(next_beat, PARTY_MODE_THEME, base + beat_seconds * 1.1)
         self.assertEqual(start, still_lit)
-        self.assertNotEqual(start, next_pulse)
+        self.assertNotEqual(start, next_beat)
 
-    def test_party_mode_blacks_out_during_tail_of_each_pulse(self):
-        pulse_seconds = 60.0 / 175.0 * 2
-        base = 3 * pulse_seconds
+    def test_party_mode_blacks_out_during_tail_of_each_beat(self):
+        beat_seconds = 60.0 / 175.0
+        base = 3 * beat_seconds
         frame = [(9, 9, 9)] * NUM_PIXELS
-        render_theme(frame, PARTY_MODE_THEME, base + pulse_seconds * 0.8)
+        render_theme(frame, PARTY_MODE_THEME, base + beat_seconds * 0.8)
         self.assertEqual([(0, 0, 0)] * NUM_PIXELS, frame)
 
-    def test_party_mode_pattern_changes_half_as_often_as_raw_beats(self):
-        # Sampling at the start of every raw 175 BPM beat, the rendered
-        # pattern should only actually change every other sample.
+    def test_party_mode_pattern_changes_every_beat(self):
+        # Sampling at the start of every 175 BPM beat, the rendered pattern
+        # should be different every single time now (no divisor grouping
+        # beats together).
         beat_seconds = 60.0 / 175.0
-        distinct = set()
+        frames = []
         for beat in range(8):
             frame = [(0, 0, 0)] * NUM_PIXELS
             render_theme(frame, PARTY_MODE_THEME, beat * beat_seconds + beat_seconds * 0.01)
-            distinct.add(tuple(frame))
-        # 8 raw-beat samples, changing only every other one -> at most 4
-        # distinct patterns (could be fewer if a lit/blackout pair repeats).
-        self.assertLessEqual(len(distinct), 4)
+            frames.append(tuple(frame))
+        self.assertEqual(8, len(set(frames)))
 
     def test_party_mode_default_bpm_matches_config_value(self):
         implicit = [(0, 0, 0)] * NUM_PIXELS
@@ -115,8 +112,8 @@ class ThemeTests(unittest.TestCase):
     def test_party_mode_custom_bpm_changes_the_pattern(self):
         default_bpm = [(0, 0, 0)] * NUM_PIXELS
         double_bpm = [(0, 0, 0)] * NUM_PIXELS
-        render_theme(default_bpm, PARTY_MODE_THEME, 1.0)
-        render_theme(double_bpm, PARTY_MODE_THEME, 1.0, party_bpm=PARTY_BPM * 2)
+        render_theme(default_bpm, PARTY_MODE_THEME, 0.5)
+        render_theme(double_bpm, PARTY_MODE_THEME, 0.5, party_bpm=PARTY_BPM * 2)
         self.assertNotEqual(default_bpm, double_bpm)
 
     def test_render_startup_forwards_party_bpm_to_render_theme(self):
