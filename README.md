@@ -70,10 +70,12 @@ Once running:
 
 ```
 mk9-badge/
+├── buildguide.md — badge assembly, flashing, and troubleshooting
 ├── hardware/   — KiCad design files, BOM, fabrication outputs
 └── software/   — MicroPython firmware
 ```
 
+- [Build Guide →](buildguide.md) — assembly, battery installation, flashing, and troubleshooting
 - [Hardware →](hardware/README.md) — schematics, PCB layout, drill files, BOM
 - [Software →](software/README.md) — firmware architecture, pinout, library requirements, flashing instructions
 
